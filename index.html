@@ -16,6 +16,7 @@
     <script src="components/interaction/pressable.js"></script>
     <script src="components/app/controls-helper.js"></script>
     <script src="components/app/controller-connected.js"></script>
+    <script src="external/link-controls.js"></script>
   </head>
   <body>
     <a-scene
@@ -24,6 +25,7 @@
       info-message="htmlSrc: #messageText"
     >
       <a-assets>
+        <img id="FSNG-Icon-360" crossOrigin="anonymous" src="assets/icons/fsng_icon.png">
         <a-asset-item
           id="FSNG"
           src="assets/models/FSNG.glb"
@@ -31,7 +33,11 @@
         <a-asset-item
           id="FSNG-Icon"
           src="assets/models/MenuIcon_FSNG.glb"
-        ></a-asset-item>
+        ></a-asset-item>  
+        <a-asset-item
+        id="FSNG-Icon-360"
+        src="assets/icons/fsng_icon.png"
+      ></a-asset-item>
         <a-asset-item
           id="font"
           src="assets/fonts/exo2Black.typeface.json"
@@ -72,6 +78,9 @@
 
       //event manager
       <a-entity id="event_manager"></a-entity>
+
+      <a-link href="templates/FSNG.html" position="0 1.5 -1.0" image="#FSNG-Icon-360"></a-link>
+s
     </a-scene>
   </body>
 </html>

@@ -25,19 +25,25 @@
       info-message="htmlSrc: #messageText"
     >
       <a-assets>
-        <img id="FSNG-Icon-360" crossOrigin="anonymous" src="assets/icons/fsng_icon.png">
-        <a-asset-item
-          id="FSNG"
-          src="assets/models/FSNG.glb"
-        ></a-asset-item>
+        <img
+          id="FSNG-Icon-360"
+          crossorigin="anonymous"
+          src="assets/icons/fsng_icon.png"
+        />
+        <img
+          id="FSNG-Icon-360_2"
+          crossorigin="anonymous"
+          src="assets/icons/fsng_icon_copy.png"
+        />
+        <a-asset-item id="FSNG" src="assets/models/FSNG.glb"></a-asset-item>
         <a-asset-item
           id="FSNG-Icon"
           src="assets/models/MenuIcon_FSNG.glb"
-        ></a-asset-item>  
+        ></a-asset-item>
         <a-asset-item
-        id="FSNG-Icon-360"
-        src="assets/icons/fsng_icon.png"
-      ></a-asset-item>
+          id="FSNG-Icon-360"
+          src="assets/icons/fsng_icon.png"
+        ></a-asset-item>
         <a-asset-item
           id="font"
           src="assets/fonts/exo2Black.typeface.json"
@@ -45,7 +51,10 @@
       </a-assets>
 
       //Load template container and Lobby template
-      <a-entity id="templateContainer" template="src: templates/Lobby.html"></a-entity>
+      <a-entity
+        id="templateContainer"
+        template="src: templates/Lobby.html"
+      ></a-entity>
 
       //Camera controls for 2d screens
       <a-camera look-controls wasd-controls position="0, 1.5, 0">
@@ -79,8 +88,7 @@
       //event manager
       <a-entity id="event_manager"></a-entity>
 
-      
-s
+      s
     </a-scene>
   </body>
 </html>

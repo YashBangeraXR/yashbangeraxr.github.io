@@ -3,7 +3,7 @@ AFRAME.registerComponent("template-button", {
     schema: {
       label: { default: "label" },
       icon: { default: "#FSNG_Icon" },
-      targetTemplate: { default: "FSNG_Template.html" },
+      targetTemplate: { default: "templates/FSNG.html" },
       scale: { default: "0.25 0.25 0.25" },
       toggable: { default: false },
     },

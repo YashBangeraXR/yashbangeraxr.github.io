@@ -1,19 +1,23 @@
 <a-entity>
-    <a-entity light="type: directional; color: #FFF; intensity: 0.6; castShadow: true;" position="-0.5 5 1"></a-entity>
-  
+  <a-entity
+    light="id: lobby-directional; type: directional; color: #FFF; intensity: 0.6; castShadow: true;"
+    position="-0.5 5 1"
+  ></a-entity>
+
+  <a-entity
+    id="crosscomm-logo"
+    position="-6 2 -7"
+    text-geometry="value: CrossComm; font: #font; bevelEnabled: true; bevelSize: 0.1; bevelThickness: 0.1; curveSegments: 5; size: 1.5; height: 0.5;"
+    material="color:#92dae6; metalness:1; roughness: .5; sphericalEnvMap: #chrome;"
+  ></a-entity>
+  //MainMenu
+  <a-entity id="menu" menu position="0 1.5 -2">
     <a-entity
-              position = "-6 2 -7"
-      text-geometry="value: CrossComm; font: #font; bevelEnabled: true; bevelSize: 0.1; bevelThickness: 0.1; curveSegments: 5; size: 1.5; height: 0.5;"
-      material="color:#92dae6; metalness:1; roughness: .5; sphericalEnvMap: #chrome;"
-    ></a-entity>
-    //MainMenu
-    <a-entity id="menu" menu position="0 1 -0.5" rotation="-45 0 0">
-      <a-entity
-        id="fsngButton"
-        template-button="label:FSNG; icon:#FSNG-Icon; template:templates/FSNG.html"
-        position="-0.15 0 0"
-      >
-      </a-entity>
+      id="fsngButton"
+      template-button="label:FSNG; icon:#FSNG-Icon-360; template:templates/FSNG.html; scale: .5 .75 1"
+      position="-.75 0 0"
+      s
+    >
     </a-entity>
   </a-entity>
-  
+</a-entity>

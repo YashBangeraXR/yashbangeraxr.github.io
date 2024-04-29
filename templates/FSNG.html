@@ -1,11 +1,11 @@
 <a-entity
-  id="FSNG environment"
+  id="FSNG"
   position="0, 0.01, -1.5"
   gltf-model="#FSNG"
   animation-mixer
   shadow="cast: true; receive: true"
 ></a-entity>
-
+//Add directional light
 <a-light
   id="directional"
   type="directional"
@@ -17,3 +17,9 @@
 >
   <a-entity id="directionaltarget" position=".3 2.75 -2.5"></a-entity>
 </a-light>
+//add ambient light
+<a-light
+  id="ambient"
+  type="ambient"
+  light="color: #ffffff; intensity: 1"
+></a-light>

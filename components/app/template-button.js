@@ -11,6 +11,7 @@ AFRAME.registerComponent("template-button", {
     init: function () {
       console.log("icon: ", this.data.icon);
       console.log("type: ", this.data.type);
+
       //Set mesh properties
       const el = this.el;
 
@@ -120,11 +121,13 @@ AFRAME.registerComponent("template-button", {
     },
   
     loadTemplate: function () {
+      
       const templateContainer = document.querySelector("#templateContainer");
       console.log(templateContainer);
       console.log(templateContainer.getAttribute("template"));
       setTimeout(() => {
-        templateContainer.setAttribute("template", "src: " + this.data.targetTemplate);
+        templateContainer.setAttribute("template", "src: " + this.data.targetTemplate);       
+        console.log("Template Loaded");
       }, 10);
     },
   });

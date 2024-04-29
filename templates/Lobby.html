@@ -1,14 +1,14 @@
-<a-entity>
-  <a-entity
-    light="id: lobby-directional; type: directional; color: #FFF; intensity: 0.6; castShadow: true;"
-    position="-0.5 5 1"
-  ></a-entity>
-
+<a-entity id = "Lobby">
+  //Lighting
+  <a-entity id="lighting">
+    <a-entity id="Lobby-Dir" light="type: directional; color: white; intensity: 1" position="0 1 2" castShadow: "true"></a-entity>
+  </a-entity>
   <a-entity
     id="crosscomm-logo"
     position="-6 2 -7"
     text-geometry="value: CrossComm; font: #font; bevelEnabled: true; bevelSize: 0.1; bevelThickness: 0.1; curveSegments: 5; size: 1.5; height: 0.5;"
     material="color:#92dae6; metalness:1; roughness: .5; sphericalEnvMap: #chrome;"
+    shadow="cast: true; receive: true"
   ></a-entity>
   //MainMenu
   <a-entity id="menu" menu position="0 1.5 -2">
@@ -16,15 +16,9 @@
       id="fsngButton"
       template-button="label:FSNG; icon:#FSNG-Icon-360; template:templates/FSNG.html; scale: .5 .75 1"
       position="-.75 0 0"
-      s
     >
     </a-entity>
-    <a-entity
-      id="fsngButton2"
-      template-button="label:FSNG2; icon:#FSNG-Icon-360_2; template:templates/FSNG.html; type: sphere; scale : 0.5 0.5 0.5; loop: true"
-      position=".75 0 0"
-      animation="attribute: rotation; easing: linear; dur: 1000; to: 0 360 0; repeat: indefinite"
-    >
+    
     </a-entity>
   </a-entity>
 </a-entity>

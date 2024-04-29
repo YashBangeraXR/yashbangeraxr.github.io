@@ -21,8 +21,9 @@
   <body>
     <a-scene
       controls-helper
-      environment="preset: starry"
+      environment="preset: moon; lightPosition: 1 50S 1; shadow: true; grid: none; ground: hills; groundYScale: 20; flatShading: false; fog: 0.8; dressing: none; skyType: gradient; skyColor: black; horizonColor: #212124"
       info-message="htmlSrc: #messageText"
+      shadow="autoUpdate: true; type: pcfsoft ; enabled: true;"
     >
       <a-assets>
         <img
@@ -58,7 +59,14 @@
 
       //Camera controls for 2d screens
       <a-camera look-controls wasd-controls position="0, 1.5, 0">
-        <a-cursor id="cursor"> </a-cursor>
+        <a-entity
+          id="cursor"
+          cursor="fuse: false; fuseTimeout: 500"
+          position="0 0 -.1"
+          geometry="primitive: ring; radiusInner: 0.002; radiusOuter: 0.003"
+          material="color: black; shader: flat"
+        >
+        </a-entity>
       </a-camera>
 
       //Hand tracking controls
@@ -86,9 +94,7 @@
       ></a-entity>
 
       //event manager
-      <a-entity id="event_manager"></a-entity>
-
-      s
+      <a-entity id="event_manager"></a-entity>s
     </a-scene>
   </body>
 </html>

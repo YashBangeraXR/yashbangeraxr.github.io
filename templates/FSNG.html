@@ -1,1 +1,19 @@
-<a-entity position="0, 0.01, -1.5" gltf-model="#FSNG" animation-mixer></a-entity>
+<a-entity
+  id="FSNG environment"
+  position="0, 0.01, -1.5"
+  gltf-model="#FSNG"
+  animation-mixer
+  shadow="cast: true; receive: true"
+></a-entity>
+
+<a-light
+  id="directional"
+  type="directional"
+  light="castShadow:true; shadowBias: -0.001"
+  position="0 2.25 .4"
+  rotation="-90 0 0"
+  intensity="1"
+  target="#directionaltarget"
+>
+  <a-entity id="directionaltarget" position=".3 2.75 -2.5"></a-entity>
+</a-light>

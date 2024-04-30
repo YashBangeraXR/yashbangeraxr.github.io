@@ -25,8 +25,20 @@
       template-button="label:Focus-Stem Next-Gen; icon:#FSNG-Icon-360; template:templates/FSNG.html; scale: .5 .75 1"
       position="-.75 0 0"
       look-at="[camera]"
+      class="template-button"
     >
     </a-entity>
     >
   </a-entity>
+  //Particle System
+  <a-entity
+    id="dust particles"
+    position="0 5 0"
+    particle-system="preset: dust; particleCount: 20"
+  ></a-entity>
+  <a-entity
+    id="snow particles"
+    position="0 20 0"
+    particle-system="preset: snow; particleCount: 2000"
+  ></a-entity>
 </a-entity>

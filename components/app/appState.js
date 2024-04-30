@@ -1,3 +1,5 @@
+/* global AFRAME */
+
 const { AFRAME, APP_DATA } = window;
 
 

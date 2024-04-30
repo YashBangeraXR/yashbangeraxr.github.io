@@ -2,7 +2,6 @@
 AFRAME.registerComponent("event-manager", {
     init: function () {
       this.bindMethods();      
-      console.log("event-manager init");
       this.el.sceneEl.addEventListener('loaded', this.onSceneLoaded.bind(this));
     },
   
@@ -12,18 +11,16 @@ AFRAME.registerComponent("event-manager", {
     
     onSceneLoaded: function () {
       this.bindMethods();
-      console.log("event-manager onSceneLoaded");
-      this.fsngButtonEl = document.querySelector("#fsngButton");
-      if (this.fsngButtonEl) 
-      {
-        this.fsngButtonEl.addEventListener("onLoadTemplate", (event) => {
+      console.log("event-manager: onSceneLoaded");
+      //load all template buttons
+      const buttons = document.querySelectorAll('.template-button');
+      //add event listener to each template button
+      buttons.forEach(button => {
+        console.log("adding event listener for button: " + button.id);
+        button.addEventListener("onLoadTemplate", (event) => {
           this.loadTemplate(event);
+        });
       });
-      } 
-      else 
-      {
-          console.log("fsngButton element not found!");
-      }
     },   
   
     loadTemplate: function (event) {
@@ -31,12 +28,18 @@ AFRAME.registerComponent("event-manager", {
       const templateContainer = document.querySelector("#templateContainer");
       const destination = event.detail;
       console.log("destination: " + destination);
-      console.log(templateContainer);
-      setTimeout(() => {
-        templateContainer.setAttribute("template", "src: " + destination);       
-        console.log("Template Loaded: " + destination);
-      }, 10);
+      //check if destination is in APP_DATA
+      if (Object.keys(APP_DATA).includes(destination)) {
+        //set select app to destination
+        const target = APP_DATA[destination];
+        APP_DATA.selectedApp = target;
+        console.log("target destination: " + APP_DATA.selectedApp.templatePath);
+        setTimeout(() => {
+          //load template
+          templateContainer.setAttribute("template", "src: " + APP_DATA.selectedApp.templatePath);       
+          console.log("Template Loaded: " + APP_DATA.selectedApp.templatePath);
+        }, 10);
+      }
     },
-    
   });
   

@@ -3,7 +3,7 @@ AFRAME.registerComponent("template-button", {
     schema: {
       label: { default: "label" },
       icon: { default: "#FSNG_Icon-360" },
-      targetTemplate: { default: "templates/FSNG.html" },
+      target: { default: "focusStem" },
       scale: { default: "0.25 0.25 0.25" },
       toggable: { default: false },
       type : {default: "circle"},
@@ -103,8 +103,8 @@ AFRAME.registerComponent("template-button", {
   
     onPressedStarted: function () {
       var el = this.el;
-      console.log("onPressedStarted " + this.data.targetTemplate);
-      el.emit("onLoadTemplate", this.data.targetTemplate);
+      console.log("onPressedStarted " + this.data.target);
+      el.emit("onLoadTemplate", this.data.target);
 
       if (this.data.togabble) {
         if (el.is("pressed")) {

@@ -1,9 +1,12 @@
-<a-entity id = "Lobby">
-  //environment
-  
-  //Lighting
+<a-entity id="Lobby">
+  //environment //Lighting
   <a-entity id="lighting">
-    <a-entity id="Lobby-point" light="type: point; color: white; intensity: .5; angle: 10; castShadow: true; distance: 20; decay: 1" position="0 5 -4" rotation= "-90 0 0"></a-entity>
+    <a-entity
+      id="Lobby-point"
+      light="type: point; color: white; intensity: .5; angle: 10; castShadow: true; distance: 20; decay: 1"
+      position="0 5 -4"
+      rotation="-90 0 0"
+    ></a-entity>
   </a-entity>
   <a-entity
     id="crosscomm-logo"
@@ -11,7 +14,8 @@
     text-geometry="value: CrossComm; font: #font; bevelEnabled: true; bevelSize: 0.1; bevelThickness: 0.1; curveSegments: 5; size: 1.5; height: 0.5;"
     material="color:#92dae6; metalness:1; roughness: .5; sphericalEnvMap: #chrome;"
     shadow="cast: true; receive: true"
-    raytrace="shader:#foo-fs"s
+    raytrace="shader:#foo-fs"
+    s
   >
   </a-entity>
   //MainMenu
@@ -20,10 +24,9 @@
       id="fsngButton"
       template-button="label:Focus-Stem Next-Gen; icon:#FSNG-Icon-360; template:templates/FSNG.html; scale: .5 .75 1"
       position="-.75 0 0"
-      look-at="[camera]"></a-entity>
+      look-at="[camera]"
     >
     </a-entity>
-    
-    </a-entity>
+    >
   </a-entity>
 </a-entity>

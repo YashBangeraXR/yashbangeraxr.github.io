@@ -1,24 +1,42 @@
 /* global AFRAME */
 AFRAME.registerComponent("event-manager", {
     init: function () {
-      this.bindMethods();
-      this.fsngButtonEl = document.querySelector("#fsngButton");
-      this.fsngButtonEl.addEventListener("click", this.loadTemplate);
+      this.bindMethods();      
+      console.log("event-manager init");
+      this.el.sceneEl.addEventListener('loaded', this.onSceneLoaded.bind(this));
     },
   
     bindMethods: function () {
-      this.onClick = this.onClick.bind(this);
+      this.loadTemplate = this.loadTemplate.bind(this);
     },
-  
-    onClick: function (evt) {
-      const targetEl = evt.target;
-      if (targetEl === this.homeButtonEl || targetEl === this.fsngButtonEl) {
-        this.fsngButtonEl.removeState("pressed");
+    
+    onSceneLoaded: function () {
+      this.bindMethods();
+      console.log("event-manager onSceneLoaded");
+      this.fsngButtonEl = document.querySelector("#fsngButton");
+      if (this.fsngButtonEl) 
+      {
+        this.fsngButtonEl.addEventListener("onLoadTemplate", (event) => {
+          this.loadTemplate(event);
+      });
+      } 
+      else 
+      {
+          console.log("fsngButton element not found!");
       }
+    },   
   
-      targetEl.addState("pressed");
+    loadTemplate: function (event) {
+      
+      const templateContainer = document.querySelector("#templateContainer");
+      const destination = event.detail;
+      console.log("destination: " + destination);
+      console.log(templateContainer);
+      setTimeout(() => {
+        templateContainer.setAttribute("template", "src: " + destination);       
+        console.log("Template Loaded: " + destination);
+      }, 10);
     },
-  
     
   });
   

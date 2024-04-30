@@ -103,8 +103,9 @@ AFRAME.registerComponent("template-button", {
   
     onPressedStarted: function () {
       var el = this.el;
-      //el.emit("click");
-      this.loadTemplate();
+      console.log("onPressedStarted " + this.data.targetTemplate);
+      el.emit("onLoadTemplate", this.data.targetTemplate);
+
       if (this.data.togabble) {
         if (el.is("pressed")) {
           el.removeState("pressed");
@@ -118,17 +119,6 @@ AFRAME.registerComponent("template-button", {
       if (this.el.is("pressed")) {
         return;
       }
-    },
-  
-    loadTemplate: function () {
-      
-      const templateContainer = document.querySelector("#templateContainer");
-      console.log(templateContainer);
-      console.log(templateContainer.getAttribute("template"));
-      setTimeout(() => {
-        templateContainer.setAttribute("template", "src: " + this.data.targetTemplate);       
-        console.log("Template Loaded");
-      }, 10);
     },
   });
   

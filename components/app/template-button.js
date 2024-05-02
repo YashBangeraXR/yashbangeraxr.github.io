@@ -81,6 +81,12 @@ AFRAME.registerComponent("template-button", {
         "animation__click",
         "property: scale; to: 0 0 0; dur: 300; startEvents: pressedended"
       );
+
+      //animate to move to 0 1.5 0  when pressed 
+      el.setAttribute(
+        "animation__click",
+        "property: position; to: 0 0 0; dur: 1200; startEvents: onLoadTemplate"
+      );
   
       this.bindMethods();
       this.el.addEventListener("stateadded", this.stateChanged);

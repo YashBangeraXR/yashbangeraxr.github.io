@@ -31,51 +31,53 @@
       id="scene-root"
       renderer="antialias: true; sortObjects: true; colorManagement: true; physicallyCorrectLights: true;"
       environment="preset: starry; grid: none; groundColor: white; groundYScale: 30; lighting: none"
+      inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"
     >
+      >
       <a-assets>
         <img
           id="FSNG-Icon-360"
           crossorigin="anonymous"
           src="assets/icons/fsng_icon.png"
         />
-        <img
-          id="FSNG-Icon-360_2"
-          crossorigin="anonymous"
-          src="assets/icons/fsng_icon_copy.png"
-        />
         <a-asset-item id="FSNG" src="assets/models/FSNG.glb"></a-asset-item>
-        <a-asset-item
-          id="FSNG-Icon"
-          src="assets/models/MenuIcon_FSNG.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="FSNG-Icon-360"
-          src="assets/icons/fsng_icon.png"
-        ></a-asset-item>
         <a-asset-item
           id="font"
           src="assets/fonts/exo2Black.typeface.json"
         ></a-asset-item>
+        <img
+          id="image-button"
+          src="assets/icons/image-button.png"
+        ></img>
+        <img
+          id="file-text-button"
+          src="assets/icons/file-text-button.png"
+        ></img>
+        <img
+          id="arrow-left-button"
+          src="assets/icons/arrow-left-button.png"
+        ></img>
+        <img
+          id="panel-background"
+          src="assets/icons/button-background.png"
+        ></img>
       </a-assets>
 
       //Load template container and Lobby template
       <a-entity
         id="templateContainer"
-        template="src: templates/Lobby.html"
+        template="src: templates/FSNG.html"
       ></a-entity>
 
       //Camera controls for 2d screens
       <a-camera
-        look-controls="pointerLockEnabled: true"
+        look-controls="pointerLockEnabled: false"
         wasd-controls
         position="0, 1.5, 0"
       >
         <a-entity
           id="cursor"
-          cursor="fuse: false; fuseTimeout: 500"
-          position="0 0 -.1"
-          geometry="primitive: ring; radiusInner: 0.002; radiusOuter: 0.003"
-          material="color: black; shader: flat"
+          cursor="rayOrigin: mouse; fuse: false; fuseTimeout: 500"
         >
         </a-entity>
         //Create fade effect for camera using a sphere geomtry with black

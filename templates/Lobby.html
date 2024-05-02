@@ -19,12 +19,16 @@
   >
   </a-entity>
   //MainMenu
-  <a-entity id="menu" menu position="0 1.5 -2">
+  <a-entity
+    id="menu"
+    menu
+    position="0 1.5 0"
+    animation__rotateLeft="property: rotation; to: 0 360 0; loop: true; dur: 10000; startEvents: menuRotate"
+  >
     <a-entity
       id="fsngButton"
-      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: .5 .75 1"
-      position="-.75 0 0"
-      look-at="[camera]"
+      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
+      position="0 0 -2"
       class="template-button"
     >
     </a-entity>

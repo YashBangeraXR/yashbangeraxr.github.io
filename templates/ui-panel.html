@@ -1,116 +1,157 @@
+<!DOCTYPE html>
 <a-entity
-        id="UI-Container"
-        position="0 0 -100"
-        visible="false"
+  id="UI-Container"
+  position="0 1.3 -0.2"
+  rotation="-45 0 0"
+  visible="true"
 >
-    <a-entity id="Buttons-Container"
-        position="0 1.2 0"
-        scale=".5 .5 0"
+  <a-entity id="Buttons-Container" position="0 0 0" scale=".2 .2 0">
+    <a-image
+      id="button-panel-background"
+      src="#panel-background"
+      material="color: #000; opacity: 0.5; transparent: true; side: double;"
+      position="0 0 -1"
+      scale="1.1 .3 1"
+      width="1"
+      height="1"
+    ></a-image>
+    <a-image
+      id="back-button"
+      src="#arrow-left-button"
+      position="-.32 0 0"
+      scale="1 1 1"
+      width=".3"
+      height=".2"
     >
-        <a-image
-          load-template
-          template-target="baseTemplate"
-          src="/xr-portfolio/icons/arrow-left-button.png"
-          position="-.32 0 0"
-          scale="1 1 1"
-          width=".3"
-          height=".2"
-        >
-        </a-image>
-        <a-image
-          show-images
-          src="/xr-portfolio/icons/image-button.png"
-          position="0 0 0"
-          scale="1 1 1"
-          width=".3"
-          height=".2"
-        ></a-image>
-        <a-image
-          show-description
-          src="/xr-portfolio/icons/file-text-button.png"
-          position=".32 0 0"
-          scale="1 1 1"
-          width=".3"
-          height=".2"
-        ></a-image>
-
+    </a-image>
+    <a-image
+      id="image-button"
+      src="#image-button"
+      position="0 0 0"
+      scale="1 1 1"
+      width=".3"
+      height=".2"
+    ></a-image>
+    <a-image
+      id="description-button"
+      src="#file-text-button"
+      position=".32 0 0"
+      scale="1 1 1"
+      width=".3"
+      height=".2"
+    ></a-image>
+  </a-entity>
+  <a-entity
+    id="Description-Container"
+    scale=".2 .2 0"
+    position="0 .14 0"
+    height="1"
+    width="1"
+    visible="false"
+  >
+    <a-image
+      id="description-panel-background"
+      src="#panel-background"
+      material="color: #000; opacity: 0.5; transparent: true; side: double;"
+      position="0 0 -1"
+      scale="1.7 1 1"
+      width="1"
+      height="1"
+    ></a-image>
+    //Header
+    <a-entity id="Header Parent">
+      <a-text
+        id="AppTitle"
+        color="#fff"
+        position="-.7 .45 0"
+        width=".9"
+        text="value: App Title;"
+      ></a-text>
+      <a-text
+        id="AppSubtitle"
+        color="#fff"
+        position="-.7 .4 0"
+        width=".55"
+        text="value: App Subtitle;"
+      ></a-text>
     </a-entity>
+    //Challenge
+    <a-entity id="Challenge Parent" position="0 .3 0">
+      <a-text
+        id="ChallengeLabel"
+        color="#fff"
+        width=".8"
+        position="-.7 0 0"
+        text="value: The Challenge;"
+      ></a-text>
+      <a-text
+        id="TheChallenge"
+        color="#fff"
+        position="-.45 0 0"
+        width="1.24"
+        wrap-count="70"
+        text="align: left; anchor: left; baseline: top;"
+      ></a-text>
+    </a-entity>
+    //Approach
+    <a-entity id="Approach Parent" position="0 0.05 0">
+      <a-text
+        id="ApproachLabel"
+        color="#fff"
+        width=".7"
+        position="-.7 0 0"
+        text="value: The Approach"
+      ></a-text>
+      <a-text
+        id="TheApproach"
+        color="#fff"
+        position="-.45 0 0"
+        width="1.24"
+        wrap-count="70"
+        text="align: left; anchor: left; baseline: top;"
+      ></a-text>
+    </a-entity>
+    //Results
+    <a-entity id="Results Parent" position="0 -.27 0">
+      <a-text
+        id="ResultsLabel"
+        color="#fff"
+        width=".7"
+        position="-.7 0 0"
+        text="value: The Results"
+      ></a-text>
 
+      <a-text
+        id="TheResults"
+        color="#fff"
+        position="-.45 0 0"
+        width="1.24"
+        wrap-count="70"
+        text="align: left; anchor: left; baseline: top;"
+      ></a-text>
+    </a-entity>
+  </a-entity>
+  <a-entity
+    id="Images-Container"
+    scale=".2 .2 0"
+    position="0 .14 0"
+    height="1"
+    width="1"
+    visible="true"
+  >
+    <a-image
+      id="images-panel-background"
+      src="#panel-background"
+      material="color: #000; opacity: 0.5; transparent: true; side: double;"
+      position="0 0 -1"
+      scale="1.7 1 1"
+      width="1"
+      height="1"
+    ></a-image>
     <a-entity
-            id="DescriptionContainer"
-            scale=".8 .8 0"
-            position="0 1.68 0"
-            height="1"
-            width="1"
-            visible="false"
-    >
-        <a-image
-            src="/xr-portfolio/img/panel-background.png"
-            position="0 0 -1"
-            scale="1 1 1"
-            width="1"
-            height="1"
-        ></a-image>
-        <a-text
-            id="AppTitle"
-            color="#555"
-            position="-.47 .45 0"
-            width=".9"
-        ></a-text>
-        <a-text
-            id="AppSubtitle"
-            color="#555"
-            position="-.467 .41 0"
-            width=".55"
-        ></a-text>
-        <a-text
-            id="ChallengeLabel"
-            color="#555"
-            width=".7"
-            position="-.47 .35 0"
-            text="value: The Challenge;"
-        ></a-text>
-        <a-text
-            id="ApproachLabel"
-            color="#555"
-            width=".7"
-            position="-.47 .05 0"
-            text="value: The Approach"
-        ></a-text>
-        <a-text
-            id="ResultsLabel"
-            color="#555"
-            width=".7"
-            position="-.47 -.25 0"
-            text="value: The Results"
-        ></a-text>
-
-        <a-text
-            id="TheChallenge"
-            color="#555"
-            position="-.24 .355 0"
-            width=".7"
-            wrap-count="55"
-            text="align: left; anchor: left; baseline: top"
-        ></a-text>
-        <a-text
-            id="TheApproach"
-            color="#555"
-            position="-.24 .055 0"
-            width=".7"
-            wrap-count="55"
-            text="align: left; anchor: left; baseline: top"
-        ></a-text>
-        <a-text
-            id="TheResults"
-            color="#555"
-            position="-.24 -.245 0"
-            width=".7"
-            wrap-count="55"
-            text="align: left; anchor: left; baseline: top"
-        ></a-text>
-    </a-entity>
-    <a-entity visible="false" scale="1 1 0" position="-0.016 2.255 -1.500" geometry="height: 1.610; width:2.5">
-        <a-entity layout="align: center; type:box; columns: 3; margin: .8" position="0 0 50" id="ImageContainer"></a-entity>
-    </a-entity>
+      layout="align: center; type:box; columns: 3; margin: .8"
+      position="0 0 0"
+      id="ImageContainer"
+    ></a-entity>
+  </a-entity>
 </a-entity>

@@ -17,7 +17,7 @@ AFRAME.registerComponent("template-button", {
 
       if(this.data.type === "circle")
       {
-        el.setAttribute("geometry", "primitive: circle; width: 1; height: 1d; depth: 1");
+        el.setAttribute("geometry", "primitive: plane; width: 1; height: 1; depth: .01");
         el.setAttribute("material", "shader: portal; color: white; backgroundColor: white; pano: " + this.data.icon);
       }
       else if(this.data.type === "sphere")
@@ -28,8 +28,14 @@ AFRAME.registerComponent("template-button", {
 
       el.setAttribute("pressable");
       el.setAttribute("scale", this.data.scale);
-
       el.setAttribute("shadow", "receive: true; cast: true" );
+
+      //Add background
+      const backgroundEl = (this.backgroundEl = document.createElement("a-entity"));
+      this.el.appendChild(backgroundEl);
+      backgroundEl.setAttribute("geometry", "primitive: plane; width: 1.1; height: 1.05; depth: .01");
+      backgroundEl.setAttribute("material", "shader: flat; color: white");
+      backgroundEl.setAttribute("position", "0 0 -.01");
   
       //set label properties
       const labelEl = (this.labelEl = document.createElement("a-entity"));
@@ -39,8 +45,8 @@ AFRAME.registerComponent("template-button", {
         color: "white",
         align: "center",
       });
-      labelEl.setAttribute("scale", "5 5 5");
-      labelEl.setAttribute("position", "0, -1.25, 0");
+      labelEl.setAttribute("scale", "2 2 2");
+      labelEl.setAttribute("position", "0 -.4 0");
       labelEl.setAttribute("shadow", "receive: true; cast: true");
 
 

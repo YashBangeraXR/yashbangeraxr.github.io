@@ -1,6 +1,6 @@
 <a-entity
   id="FSNG"
-  position="0, 0.01, -1.5"
+  position="0, 0.01, -2.5"
   gltf-model="#FSNG"
   animation-mixer
   shadow="cast: true; receive: true"
@@ -24,11 +24,4 @@
   light="color: #ffffff; intensity: 1"
 ></a-light>
 
-<a-entity
-  id="homeButton"
-  template-button="label: Home; icon: #FSNG-Icon-360; target: baseTemplate; scale: .5 .75 1"
-  position=".75 1 0"
-  look-at="[camera]"
-  class="template-button"
->
-</a-entity>
+<a-entity id="ui-panel" template="src: templates/ui-panel.html"> </a-entity>

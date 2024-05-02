@@ -116,16 +116,10 @@ AFRAME.registerComponent("template-button", {
            fadeEl.setAttribute("position", "0 200 0");
            fadeEl.emit("fadeToClear");}, 500);
        });
- 
-       //load all template buttons
-       const buttons = document.querySelectorAll('.template-button');
-       //add event listener to each template button
-       buttons.forEach(button => {
-         console.log("adding event listener for button: " + button.id);
-         button.addEventListener("onLoadTemplate", (event) => {
-           this.setTemplate(event);
-         });
-       });
+       
+       this.el.addEventListener("onLoadTemplate", (event) => {
+        this.setTemplate(event);
+      });
     },
   
     bindMethods: function () {
@@ -146,6 +140,7 @@ AFRAME.registerComponent("template-button", {
       var el = this.el;
       console.log("onPressedStarted " + this.data.target);
       el.emit("onLoadTemplate", this.data.target);
+
 
       if (this.data.togabble) {
         if (el.is("pressed")) {

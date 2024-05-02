@@ -10,11 +10,7 @@ AFRAME.registerComponent("event-manager", {
     
     onSceneLoaded: function () {
       this.bindMethods();
-      console.log("event-manager: onSceneLoaded");
-
-     
-    },
-    
-   
+      console.log("event-manager: onSceneLoaded");    
+    },   
   });
   

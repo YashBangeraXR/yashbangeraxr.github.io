@@ -1,7 +1,7 @@
 window.APP_DATA = {
   selectedApp: {
-    name: 'Properly Formatted App Name',
-    description: 'Brief description of app.',
+    name: '',
+    description: '',
     challenge: ``,
     approach: ``,
     results: ``,
@@ -21,14 +21,15 @@ window.APP_DATA = {
 	  Despite being geographically distant, students could collaborate with one another in the same simulated space as they worked through realistic medical scenarios such as cleaning chemical spills in the lab or making surgical cuts on patients in the OR`,
     results: `While many summer programs were forced to cancel due to COVID-19, the FocuSStem NextGen Summer Intensive was able to successfully pivot. The VR app provided students with an enriching educational experience that fostered collaboration and experiential learning`,
     images: [
-      'img/project-screenshots/FocuSStem/focusstem-01.png',
-      'images/project-screenshots/FocuSStem/focusstem-02.png',
-      'images/project-screenshots/FocuSStem/focusstem-06.png',
-      'images/project-screenshots/FocuSStem/focusstem-03.png',
-      'images/project-screenshots/FocuSStem/focusstem-04.png',
-      'images/project-screenshots/FocuSStem/focusstem-05.png',
+      'assets/images/project-screenshots/FocuSStem/focusstem-01.png',
+      'assets/images/project-screenshots/FocuSStem/focusstem-02.png',
+      'assets/images/project-screenshots/FocuSStem/focusstem-06.png',
+      'assets/images/project-screenshots/FocuSStem/focusstem-03.png',
+      'assets/images/project-screenshots/FocuSStem/focusstem-04.png',
+      'assets/images/project-screenshots/FocuSStem/focusstem-05.png',
     ],
-    imageScale: '.75 .75 .75',
+    //following 16:9 aspect ratio
+    imageScale: '.5 .28 .5',
   },
   wellAware: {
     templatePath: 'templates/WellAware.html',
@@ -55,7 +56,7 @@ window.APP_DATA = {
   },
   baseTemplate: {
     templatePath: 'templates/Lobby.html',
-    name: 'Properly Formatted App Name',
+    name: 'baseTemplate',
     description: 'Breif description of app.',
     challenge: ``,
     approach: ``,

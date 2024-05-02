@@ -27,7 +27,6 @@ AFRAME.registerComponent("ui-manager", {
             {                
                 buttonContainer.setAttribute('visible', true);
             }
-
         });
     },
 

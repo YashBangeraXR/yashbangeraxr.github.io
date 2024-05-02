@@ -23,26 +23,60 @@
     id="menu"
     menu
     position="0 1.5 0"
+    rotation="0 150 0"
     animation__rotateLeft="property: rotation; to: 0 360 0; loop: true; dur: 10000; startEvents: menuRotate"
+    layout="align: center; type:circle; plane:xz; radius: 2.5; margin: 0.1; angle: 30"
   >
     <a-entity
       id="fsngButton"
       template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
-      position="0 0 -2"
+      position="0 0 0"
       class="template-button"
+      look-at="[camera]"
     >
     </a-entity>
+    <a-entity
+      id="fsngButton"
+      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
+      position="0 0 0"
+      class="template-button"
+      look-at="[camera]"
     >
+    </a-entity>
+    <a-entity
+      id="fsngButton"
+      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
+      position="0 0 0"
+      class="template-button"
+      look-at="[camera]"
+    >
+    </a-entity>
+    <a-entity
+      id="fsngButton"
+      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
+      position="0 0 0"
+      class="template-button"
+      look-at="[camera]"
+    >
+    </a-entity>
+    <a-entity
+      id="fsngButton"
+      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
+      position="0 0 0"
+      class="template-button"
+      look-at="[camera]"
+    >
+    </a-entity>
+    //Particle System
+    <a-entity
+      id="dust particles"
+      position="0 5 0"
+      particle-system="preset: dust; particleCount: 20"
+    ></a-entity>
+    <a-entity
+      id="snow particles"
+      position="0 20 0"
+      particle-system="preset: snow; particleCount: 2000"
+    ></a-entity>
   </a-entity>
-  //Particle System
-  <a-entity
-    id="dust particles"
-    position="0 5 0"
-    particle-system="preset: dust; particleCount: 20"
-  ></a-entity>
-  <a-entity
-    id="snow particles"
-    position="0 20 0"
-    particle-system="preset: snow; particleCount: 2000"
-  ></a-entity>
 </a-entity>

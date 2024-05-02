@@ -9,9 +9,6 @@ AFRAME.registerComponent("template-button", {
       type : {default: "circle"},
     },
     init: function () {
-      console.log("icon: ", this.data.icon);
-      console.log("type: ", this.data.type);
-
       //Set mesh properties
       const el = this.el;
 
@@ -113,7 +110,7 @@ AFRAME.registerComponent("template-button", {
       const eventmanager = document.querySelector("#event-manager");
       console.log(" template button eventmanager: ", eventmanager);
       eventmanager.emit("onLoadTemplate", this.data.target);
-
+      el.emit("onLoadTemplate", this.data.target);
 
       if (this.data.togabble) {
         if (el.is("pressed")) {
@@ -129,7 +126,6 @@ AFRAME.registerComponent("template-button", {
         return;
       }
     },
-
    
   });
   

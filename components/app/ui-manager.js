@@ -3,6 +3,7 @@ AFRAME.registerComponent("ui-manager", {
 
     init: function (){
         this.bindMethods();
+        const eventmanager = document.querySelector("#event-manager");
         const templateContainer = document.querySelector("#templateContainer");
         templateContainer.addEventListener("templaterendered", () => 
         {
@@ -14,11 +15,17 @@ AFRAME.registerComponent("ui-manager", {
             this.updateDescriptionBoxValues();
             this.updateImagePanel();
 
-            if(APP_DATA.selectedApp.name == '') 
+            //if containers are not loaded, return
+            if(!imageContainer || !descriptionContainer || !buttonContainer)
+                return;
+
+            if(APP_DATA.selectedApp.name == '' || APP_DATA.selectedApp.name == 'baseTemplate') 
             {                                
+                console.log("No App Selected/Home Screen");
                 imageContainer.setAttribute('visible', false);
                 descriptionContainer.setAttribute('visible', false);
                 buttonContainer.setAttribute('visible', false);
+                return;
             }
             else
             {                
@@ -34,9 +41,9 @@ AFRAME.registerComponent("ui-manager", {
                 imageContainer.setAttribute('visible', false);
                 descriptionContainer.setAttribute('visible', false);
                 buttonContainer.setAttribute('visible', false);
-                APP_DATA.selectedApp = 'baseTemplate';
                 //load base template
-                templateContainer.setAttribute("template", "src: " + APP_DATA.baseTemplate.templatePath);
+                APP_DATA.selectedApp = 'baseTemplate';
+                eventmanager.emit("onLoadTemplate", APP_DATA.selectedApp);
             });
 
         });
@@ -49,7 +56,7 @@ AFRAME.registerComponent("ui-manager", {
 
     updateDescriptionBoxValues: function () {
         
-        if(APP_DATA.selectedApp.name == '') 
+        if(APP_DATA.selectedApp.name == '' || APP_DATA.selectedApp.name == 'baseTemplate') 
             return;
 
         console.log("Updating Description Box Values for selected app: ", APP_DATA.selectedApp.name);
@@ -72,7 +79,7 @@ AFRAME.registerComponent("ui-manager", {
       updateImagePanel: function () {
         
        
-        if(APP_DATA.selectedApp.name == '') 
+        if(APP_DATA.selectedApp.name == '' || APP_DATA.selectedApp.name == 'baseTemplate') 
         return;
         console.log("Updating Image Panel for selected app: ", APP_DATA.selectedApp.name);
         const imageGrid = document.querySelector('#ImageGrid');

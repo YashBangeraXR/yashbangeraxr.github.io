@@ -87,8 +87,8 @@ AFRAME.registerComponent("ui-button", {
   
     onPressedStarted: function () {
       var el = this.el;
-      console.log("onPressedStarted " + this);
-      el.emit("onUiButtonClicked", this);
+      el.emit("onUiButtonClicked");
+      console.log("onPressedStarted " + this.el.id);
 
       if (this.data.togabble) {
         if (el.is("pressed")) {

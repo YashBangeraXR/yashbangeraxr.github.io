@@ -12,6 +12,9 @@ AFRAME.registerComponent("ui-manager", {
             const imageContainer = document.querySelector("#Images-Container");
             const descriptionContainer = document.querySelector("#Description-Container");
             const buttonContainer = document.querySelector("#Buttons-Container");
+            const descriptionButton = document.querySelector("#description-button");
+            const imageButton = document.querySelector("#images-button");
+
             this.updateDescriptionBoxValues();
             this.updateImagePanel();
 
@@ -32,6 +35,8 @@ AFRAME.registerComponent("ui-manager", {
                 buttonContainer.setAttribute('visible', true);
             }
 
+            console.log("imageContainer: ", imageContainer);
+
             //add ui-buton events
             const backButton = document.querySelector("#back-button");
             backButton.addEventListener("onUiButtonClicked", () => {
@@ -44,6 +49,39 @@ AFRAME.registerComponent("ui-manager", {
                 //load base template
                 APP_DATA.selectedApp = 'baseTemplate';
                 eventmanager.emit("onLoadTemplate", APP_DATA.selectedApp);
+            });
+
+            descriptionButton.addEventListener("onUiButtonClicked", () => {
+                
+                console.log("Description Button Pressed");
+                //toggle description panel
+                if(descriptionContainer.getAttribute('visible'))
+                {
+                    descriptionContainer.setAttribute('visible', false);
+                }
+                else
+                {
+                    descriptionContainer.setAttribute('visible', true);
+                }
+                //turn off image panel
+                imageContainer.setAttribute('visible', false);
+            });
+
+            console.log("imageButton: ", imageButton);
+            imageButton.addEventListener("onUiButtonClicked", () => {
+                
+                console.log("Image Button Pressed");
+                //toggle image panel
+                if(imageContainer.getAttribute('visible'))
+                {
+                    imageContainer.setAttribute('visible', false);
+                }
+                else
+                {
+                    imageContainer.setAttribute('visible', true);
+                }
+                //turn off description panel
+                descriptionContainer.setAttribute('visible', false);
             });
 
         });

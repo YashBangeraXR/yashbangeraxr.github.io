@@ -117,7 +117,7 @@ AFRAME.registerComponent("template-button", {
            fadeEl.emit("fadeToClear");}, 500);
        });
        
-       this.el.addEventListener("onLoadTemplate", (event) => {
+        this.el.addEventListener("onLoadTemplate", (event) => {
         this.setTemplate(event);
       });
     },

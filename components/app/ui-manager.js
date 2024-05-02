@@ -5,10 +5,30 @@ AFRAME.registerComponent("ui-manager", {
         this.bindMethods();
         const templateContainer = document.querySelector("#templateContainer");
         templateContainer.addEventListener("templaterendered", () => 
-       {
+        {
+            console.log("Template Loaded: " + templateContainer.getAttribute("template").src);
+            const imageContainer = document.querySelector("#Images-Container");
+            const descriptionContainer = document.querySelector("#Description-Container");
+            const buttonContainer = document.querySelector("#Buttons-Container");
             this.updateDescriptionBoxValues();
             this.updateImagePanel();
-       });
+
+            //if the containers aren't loaded, skip this
+            if(!imageContainer || !descriptionContainer || !buttonContainer)
+                return;
+
+            if(APP_DATA.selectedApp.name == '') 
+            {                                
+                imageContainer.setAttribute('visible', false);
+                descriptionContainer.setAttribute('visible', false);
+                buttonContainer.setAttribute('visible', false);
+            }
+            else
+            {                
+                buttonContainer.setAttribute('visible', true);
+            }
+
+        });
     },
 
     bindMethods: function () {
@@ -17,9 +37,11 @@ AFRAME.registerComponent("ui-manager", {
       },
 
     updateDescriptionBoxValues: function () {
-        console.log("Updating Description Box Values for selected app: ", APP_DATA.selectedApp.name);
+        
         if(APP_DATA.selectedApp.name == '') 
             return;
+
+        console.log("Updating Description Box Values for selected app: ", APP_DATA.selectedApp.name);
         const challenge = document.querySelector('#TheChallenge');
         const approach = document.querySelector('#TheApproach');
         const results = document.querySelector('#TheResults');
@@ -37,15 +59,19 @@ AFRAME.registerComponent("ui-manager", {
       },
 
       updateImagePanel: function () {
+        
+       
+        if(APP_DATA.selectedApp.name == '') 
+        return;
         console.log("Updating Image Panel for selected app: ", APP_DATA.selectedApp.name);
-        const imageContainer = document.querySelector('#ImageContainer');
+        const imageGrid = document.querySelector('#ImageGrid');
         APP_DATA.selectedApp.images.forEach((imagePath) => {
             const thisImage = document.createElement('a-image');
             console.log(APP_DATA.selectedApp.imageScale);
             thisImage.setAttribute('src', imagePath);
             thisImage.setAttribute('scale', APP_DATA.selectedApp.imageScale);
           
-            imageContainer.appendChild(thisImage);
+            imageGrid.appendChild(thisImage);
           });
       },
     

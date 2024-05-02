@@ -5,7 +5,12 @@
   rotation="-45 0 0"
   visible="true"
 >
-  <a-entity id="Buttons-Container" position="0 0 0" scale=".2 .2 0">
+  <a-entity
+    id="Buttons-Container"
+    position="0 0 0"
+    scale=".2 .2 0"
+    visible="false"
+  >
     <a-image
       id="button-panel-background"
       src="#panel-background"
@@ -47,7 +52,7 @@
     position="0 .14 0"
     height="1"
     width="1"
-    visible="true"
+    visible="false"
   >
     <a-image
       id="description-panel-background"
@@ -137,7 +142,7 @@
     position="0 .14 0"
     height="1"
     width="1"
-    visible="true"
+    visible="false"
   >
     <a-image
       id="images-panel-background"
@@ -149,7 +154,7 @@
       height="1"
     ></a-image>
     <a-entity
-      id="ImageContainer"
+      id="ImageGrid"
       layout="align: center; type:box; columns: 3; marginRow: .4; marginColumn: .55"
       position="0 0 0"
     ></a-entity>

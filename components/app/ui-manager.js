@@ -6,16 +6,13 @@ AFRAME.registerComponent("ui-manager", {
         const templateContainer = document.querySelector("#templateContainer");
         templateContainer.addEventListener("templaterendered", () => 
         {
-            console.log("Template Loaded: " + templateContainer.getAttribute("template").src);
+            console.log("UI-manager-Template Loaded: " + templateContainer.getAttribute("template").src);
+            console.log("Selected App: ", APP_DATA.selectedApp.name);
             const imageContainer = document.querySelector("#Images-Container");
             const descriptionContainer = document.querySelector("#Description-Container");
             const buttonContainer = document.querySelector("#Buttons-Container");
             this.updateDescriptionBoxValues();
             this.updateImagePanel();
-
-            //if the containers aren't loaded, skip this
-            if(!imageContainer || !descriptionContainer || !buttonContainer)
-                return;
 
             if(APP_DATA.selectedApp.name == '') 
             {                                
@@ -27,6 +24,21 @@ AFRAME.registerComponent("ui-manager", {
             {                
                 buttonContainer.setAttribute('visible', true);
             }
+
+            //add ui-buton events
+            const backButton = document.querySelector("#back-button");
+            backButton.addEventListener("onUiButtonClicked", () => {
+                
+                console.log("Home Button Pressed");
+                //turn off app UI panels
+                imageContainer.setAttribute('visible', false);
+                descriptionContainer.setAttribute('visible', false);
+                buttonContainer.setAttribute('visible', false);
+                APP_DATA.selectedApp = 'baseTemplate';
+                //load base template
+                templateContainer.setAttribute("template", "src: " + APP_DATA.baseTemplate.templatePath);
+            });
+
         });
     },
 
@@ -66,10 +78,8 @@ AFRAME.registerComponent("ui-manager", {
         const imageGrid = document.querySelector('#ImageGrid');
         APP_DATA.selectedApp.images.forEach((imagePath) => {
             const thisImage = document.createElement('a-image');
-            console.log(APP_DATA.selectedApp.imageScale);
             thisImage.setAttribute('src', imagePath);
-            thisImage.setAttribute('scale', APP_DATA.selectedApp.imageScale);
-          
+            thisImage.setAttribute('scale', APP_DATA.selectedApp.imageScale);          
             imageGrid.appendChild(thisImage);
           });
       },

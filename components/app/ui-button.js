@@ -1,54 +1,37 @@
 /* global AFRAME */
-AFRAME.registerComponent("template-button", {
+AFRAME.registerComponent("ui-button", {
     schema: {
-      label: { default: "label" },
+      label: { default: "" },
       icon: { default: "#FSNG_Icon-360" },
-      target: { default: "baseTemplate" },
       scale: { default: "0.25 0.25 0.25" },
       toggable: { default: false },
-      type : {default: "circle"},
     },
     init: function () {
       console.log("icon: ", this.data.icon);
-      console.log("type: ", this.data.type);
 
       //Set mesh properties
       const el = this.el;
 
-      if(this.data.type === "circle")
-      {
-        el.setAttribute("geometry", "primitive: plane; width: 1; height: 1; depth: .01");
-        el.setAttribute("material", "shader: portal; color: white; backgroundColor: white; pano: " + this.data.icon);
-      }
-      else if(this.data.type === "sphere")
-      {
-        el.setAttribute("geometry", "primitive: sphere; width: 1; height: 1; depth: 1");
-        el.setAttribute("material", "shader: flat; color: white; src: " + this.data.icon);
-      }
-
+      el.setAttribute("geometry", "primitive: plane; width: 1; height: 1; depth: .01");
+      el.setAttribute("material", "shader: flat; color: white; backgroundColor: white; src: " + this.data.icon);
       el.setAttribute("pressable");
       el.setAttribute("scale", this.data.scale);
       el.setAttribute("shadow", "receive: true; cast: true" );
-
-      //Add background
-      const backgroundEl = (this.backgroundEl = document.createElement("a-entity"));
-      this.el.appendChild(backgroundEl);
-      backgroundEl.setAttribute("geometry", "primitive: plane; width: 1.1; height: 1.05; depth: .01");
-      backgroundEl.setAttribute("material", "shader: flat; color: white");
-      backgroundEl.setAttribute("position", "0 0 -.01");
   
       //set label properties
-      const labelEl = (this.labelEl = document.createElement("a-entity"));
-      this.el.appendChild(labelEl);
-      labelEl.setAttribute("text", {
-        value: this.data.label,
-        color: "white",
-        align: "center",
-      });
-      labelEl.setAttribute("scale", "2 2 2");
-      labelEl.setAttribute("position", "0 -.4 0");
-      labelEl.setAttribute("shadow", "receive: true; cast: true");
-
+      if(this.data.label !== "")
+      {
+        const labelEl = (this.labelEl = document.createElement("a-entity"));
+        this.el.appendChild(labelEl);
+        labelEl.setAttribute("text", {
+            value: this.data.label,
+            color: "white",
+            align: "center",
+        });
+        labelEl.setAttribute("scale", "2 2 2");
+        labelEl.setAttribute("position", "0 -.4 0");
+        labelEl.setAttribute("shadow", "receive: true; cast: true");
+      }
 
       let initialScaleX = this.data.scale.split(" ")[0];
       let initialScaleY = this.data.scale.split(" ")[1];
@@ -90,7 +73,8 @@ AFRAME.registerComponent("template-button", {
       this.el.addEventListener("stateremoved", this.stateChanged);
       this.el.addEventListener("pressedstarted", this.onPressedStarted);
       this.el.addEventListener("pressedended", this.onPressedEnded);
-      this.el.addEventListener("click", this.onPressedStarted);
+      this.el.addEventListener("click", this.onPressedStarted);     
+           
     },
   
     bindMethods: function () {
@@ -98,22 +82,13 @@ AFRAME.registerComponent("template-button", {
       this.onPressedStarted = this.onPressedStarted.bind(this);
       this.onPressedEnded = this.onPressedEnded.bind(this);
     },
-
-    update: function (oldData) {
-      if (oldData.label !== this.data.label) {
-        this.labelEl.setAttribute("text", "value", this.data.label);
-      }
-    },
   
     stateChanged: function () {},
   
     onPressedStarted: function () {
       var el = this.el;
-      console.log("onPressedStarted " + this.data.target);
-      const eventmanager = document.querySelector("#event-manager");
-      console.log(" template button eventmanager: ", eventmanager);
-      eventmanager.emit("onLoadTemplate", this.data.target);
-
+      console.log("onPressedStarted " + this);
+      el.emit("onUiButtonClicked", this);
 
       if (this.data.togabble) {
         if (el.is("pressed")) {
@@ -130,7 +105,6 @@ AFRAME.registerComponent("template-button", {
       }
     },
 
-   
   });
   
   

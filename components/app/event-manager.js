@@ -30,6 +30,7 @@ AFRAME.registerComponent("event-manager", {
         setTimeout(() => {
           //fade to clear
           fadeEl.emit("fadeToClear");}, 500);
+          this.el.emit("onUpdateUI");
       });
 
     },

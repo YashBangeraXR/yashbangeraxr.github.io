@@ -3,94 +3,100 @@ AFRAME.registerComponent("ui-manager", {
 
     init: function (){
         this.bindMethods();
-        const eventmanager = document.querySelector("#event-manager");
-        const templateContainer = document.querySelector("#templateContainer");
-        templateContainer.addEventListener("templaterendered", () => 
-        {
-            console.log("UI-manager-Template Loaded: " + templateContainer.getAttribute("template").src);
-            console.log("Selected App: ", APP_DATA.selectedApp.name);
-            const imageContainer = document.querySelector("#Images-Container");
-            const descriptionContainer = document.querySelector("#Description-Container");
-            const buttonContainer = document.querySelector("#Buttons-Container");
-            const descriptionButton = document.querySelector("#description-button");
-            const imageButton = document.querySelector("#images-button");
-
-            this.updateDescriptionBoxValues();
-            this.updateImagePanel();
-
-            //if containers are not loaded, return
-            if(!imageContainer || !descriptionContainer || !buttonContainer)
-                return;
-
-            if(APP_DATA.selectedApp.name == '' || APP_DATA.selectedApp.name == 'baseTemplate') 
-            {                                
-                console.log("No App Selected/Home Screen");
-                imageContainer.setAttribute('visible', false);
-                descriptionContainer.setAttribute('visible', false);
-                buttonContainer.setAttribute('visible', false);
-                return;
-            }
-            else
-            {                
-                buttonContainer.setAttribute('visible', true);
-            }
-
-            console.log("imageContainer: ", imageContainer);
-
-            //add ui-buton events
-            const backButton = document.querySelector("#back-button");
-            backButton.addEventListener("onUiButtonClicked", () => {
-                
-                console.log("Home Button Pressed");
-                //turn off app UI panels
-                imageContainer.setAttribute('visible', false);
-                descriptionContainer.setAttribute('visible', false);
-                buttonContainer.setAttribute('visible', false);
-                //load base template
-                APP_DATA.selectedApp = 'baseTemplate';
-                eventmanager.emit("onLoadTemplate", APP_DATA.selectedApp);
-            });
-
-            descriptionButton.addEventListener("onUiButtonClicked", () => {
-                
-                console.log("Description Button Pressed");
-                //toggle description panel
-                if(descriptionContainer.getAttribute('visible'))
-                {
-                    descriptionContainer.setAttribute('visible', false);
-                }
-                else
-                {
-                    descriptionContainer.setAttribute('visible', true);
-                }
-                //turn off image panel
-                imageContainer.setAttribute('visible', false);
-            });
-
-            console.log("imageButton: ", imageButton);
-            imageButton.addEventListener("onUiButtonClicked", () => {
-                
-                console.log("Image Button Pressed");
-                //toggle image panel
-                if(imageContainer.getAttribute('visible'))
-                {
-                    imageContainer.setAttribute('visible', false);
-                }
-                else
-                {
-                    imageContainer.setAttribute('visible', true);
-                }
-                //turn off description panel
-                descriptionContainer.setAttribute('visible', false);
-            });
-
-        });
+        this.el.addEventListener("templaterendered", this.setUpUI);
+        this.el.addEventListener("onUpdateUI", this.updateUI);
     },
 
     bindMethods: function () {
         this.updateDescriptionBoxValues = this.updateDescriptionBoxValues.bind(this);
         this.updateImagePanel = this.updateImagePanel.bind(this);
+        this.setUpUI = this.setUpUI.bind(this);
+        this.updateUI = this.updateUI.bind(this);
       },
+
+    setUpUI: function () {
+
+        console.log("UI-manager Loaded: " +  this.el.id);
+        this.imageContainer = document.querySelector("#Images-Container");
+        this.descriptionContainer = document.querySelector("#Description-Container");
+        this.buttonContainer = document.querySelector("#Buttons-Container");
+        this.descriptionButton = document.querySelector("#description-button");
+        this.imageButton = document.querySelector("#images-button");
+
+        //add ui-buton events
+        this.backButton = document.querySelector("#back-button");
+        this.backButton.addEventListener("onUiButtonClicked", () => {
+            
+            console.log("Home Button Pressed");
+            //turn off app UI panels
+            this.imageContainer.setAttribute('visible', false);
+            this.descriptionContainer.setAttribute('visible', false);
+            this.buttonContainer.setAttribute('visible', false);
+
+            //load base template            
+            APP_DATA.selectedApp = 'baseTemplate';
+            this.el.emit("onLoadTemplate", APP_DATA.selectedApp);
+        });
+
+        this.descriptionButton.addEventListener("onUiButtonClicked", () => {
+            
+            console.log("Description Button Pressed");
+            //toggle description panel
+            if(this.descriptionContainer.getAttribute('visible'))
+            {
+                this.descriptionContainer.setAttribute('visible', false);
+            }
+            else
+            {
+                this.descriptionContainer.setAttribute('visible', true);
+            }
+            //turn off image panel
+            this.imageContainer.setAttribute('visible', false);
+        });
+
+        console.log("imageButton: ", this.imageButton);
+        this.imageButton.addEventListener("onUiButtonClicked", () => {
+            
+            console.log("Image Button Pressed");
+            //toggle image panel
+            if(this.imageContainer.getAttribute('visible'))
+            {
+                this.imageContainer.setAttribute('visible', false);
+            }
+            else
+            {
+                this.imageContainer.setAttribute('visible', true);
+            }
+            //turn off description panel
+            this.descriptionContainer.setAttribute('visible', false);
+        });
+
+    },
+
+    updateUI: function () {
+        console.log("UI-manager: updateUI");
+        console.log("Selected App: ", APP_DATA.selectedApp.name);
+
+        //return if not initialized
+        if(!this.imageContainer || !this.descriptionContainer || !this.buttonContainer)
+            return;
+
+        this.updateDescriptionBoxValues();
+        this.updateImagePanel();
+         
+        if(APP_DATA.selectedApp.name == '' || APP_DATA.selectedApp.name == 'baseTemplate') 
+        {                                
+            console.log("No App Selected/Home Screen");
+            this.imageContainer.setAttribute('visible', false);
+            this.descriptionContainer.setAttribute('visible', false);
+            this.buttonContainer.setAttribute('visible', false);
+            return;
+        }
+        else
+        {                
+            this.buttonContainer.setAttribute('visible', true);
+        }
+    },
 
     updateDescriptionBoxValues: function () {
         
@@ -115,10 +121,10 @@ AFRAME.registerComponent("ui-manager", {
       },
 
       updateImagePanel: function () {
-        
-       
+               
         if(APP_DATA.selectedApp.name == '' || APP_DATA.selectedApp.name == 'baseTemplate') 
-        return;
+            return;
+        
         console.log("Updating Image Panel for selected app: ", APP_DATA.selectedApp.name);
         const imageGrid = document.querySelector('#ImageGrid');
         APP_DATA.selectedApp.images.forEach((imagePath) => {

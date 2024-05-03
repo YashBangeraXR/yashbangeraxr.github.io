@@ -7,25 +7,16 @@
       position="0 5 -4"
       rotation="-90 0 0"
     ></a-entity>
-  </a-entity>
-  <a-entity
-    id="crosscomm-logo"
-    position="-6 5 -7"
-    text-geometry="value: CrossComm; font: #font; bevelEnabled: true; bevelSize: 0.1; bevelThickness: 0.1; curveSegments: 5; size: 1.5; height: 0.5;"
-    material="color:#92dae6; metalness:1; roughness: .5; sphericalEnvMap: #chrome;"
-    shadow="cast: true; receive: true"
-    raytrace="shader:#foo-fs"
-    s
-  >
+  </a-entity>  
   </a-entity>
   //MainMenu
   <a-entity
     id="menu"
     menu
     position="0 1.5 0"
-    rotation="0 150 0"
+    rotation="0 180 0"
     animation__rotateLeft="property: rotation; to: 0 360 0; loop: true; dur: 10000; startEvents: menuRotate"
-    layout="align: center; type:circle; plane:xz; radius: 2.5; margin: 0.1; angle: 30"
+    layout="align: center; type:circle; plane:xz; radius: 2; margin: 0.1; angle: 45"
   >
     <a-entity
       id="fsngButton"

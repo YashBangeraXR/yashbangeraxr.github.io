@@ -127,6 +127,11 @@ AFRAME.registerComponent("ui-manager", {
         
         console.log("Updating Image Panel for selected app: ", APP_DATA.selectedApp.name);
         const imageGrid = document.querySelector('#ImageGrid');
+        //delete existing images that are children of the grid
+        while (imageGrid.firstChild) {
+            imageGrid.removeChild(imageGrid.firstChild);
+          }
+        //Add new images to grid as children based on selected app
         APP_DATA.selectedApp.images.forEach((imagePath) => {
             const thisImage = document.createElement('a-image');
             thisImage.setAttribute('src', imagePath);

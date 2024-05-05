@@ -2,12 +2,6 @@
   //load environment gltf-model
 
   //add plane and reflective plane
-  <a-plane
-    id="floor"
-    shadow="receive: true; cast:false;"
-    material="roughness:0.01;metalness:1;opacity:.25;shader:standard;emissive:#7d7d7d;"
-    position="0 0 0" rotation="-90 0 0" width="100" height="100" 
-    color="white">  </a-plane>
  
   <a-plane 
   id="reflective-floor-layer"
@@ -15,9 +9,8 @@
   shadow="receive: true; cast:false;"
   material="roughness:0.01;metalness:1;opacity:.25;shader:standard;emissive:#7d7d7d;"
   position="0 .01 0" rotation="-90 0 0" width="100" height="100" 
-  color="white"
-  >
-</a-plane>
+  color="white">
+  </a-plane>
 
 //sky
 <a-sky src="#Lobby-Sky" rotation="0 0 0"></a-sky>
@@ -34,7 +27,7 @@
     <a-entity
       id="Lobby-point"
       light="type: point; color: white; intensity: 2; castShadow: true; distance: 20; decay: 1; shadowBias: -0.002"
-      position="1 4.047 -6.76"
+      position="0 0 0"
       rotation="0 0 0"
     ></a-entity>
   </a-entity>  
@@ -46,10 +39,10 @@
     position="0 1.5 0"sssssssssssssssssssd
   >
     <a-entity
-      id="fsngButton"
-      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
+      id="fsngArea"
+      project-area="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; portalScale: 1.5 2.85 1"
       position="0 0 -5"
-      rotation="0 -15 0"
+      rotation="0 0 0"
       class="template-button"
     >
     </a-entity>

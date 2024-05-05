@@ -4,27 +4,18 @@ AFRAME.registerComponent("template-button", {
       label: { default: "label" },
       icon: { default: "#FSNG_Icon-360" },
       target: { default: "baseTemplate" },
-      scale: { default: "0.25 0.25 0.25" },
+      portalScale: { default: "0.25 0.25 0.25" },
       toggable: { default: false },
-      type : {default: "circle"},
     },
     init: function () {
       //Set mesh properties
       const el = this.el;
 
-      if(this.data.type === "circle")
-      {
-        el.setAttribute("geometry", "primitive: plane; width: 1; height: 1; depth: .01");
-        el.setAttribute("material", "shader: portal; color: white; backgroundColor: white; pano: " + this.data.icon);
-      }
-      else if(this.data.type === "sphere")
-      {
-        el.setAttribute("geometry", "primitive: sphere; width: 1; height: 1; depth: 1");
-        el.setAttribute("material", "shader: flat; color: white; src: " + this.data.icon);
-      }
+      el.setAttribute("geometry", "primitive: plane; width: 1; height: 1; depth: .01");
+      el.setAttribute("material", "shader: portal; color: white; backgroundColor: white; pano: " + this.data.icon);
 
       el.setAttribute("pressable");
-      el.setAttribute("scale", this.data.scale);
+      el.setAttribute("scale", this.data.portalScale);
       el.setAttribute("shadow", "receive: true; cast: true" );
 
       //Add background
@@ -47,9 +38,9 @@ AFRAME.registerComponent("template-button", {
       labelEl.setAttribute("shadow", "receive: true; cast: true");
 
 
-      let initialScaleX = this.data.scale.split(" ")[0];
-      let initialScaleY = this.data.scale.split(" ")[1];
-      let initialScaleZ = this.data.scale.split(" ")[2];
+      let initialScaleX = this.data.portalScale.split(" ")[0];
+      let initialScaleY = this.data.portalScale.split(" ")[1];
+      let initialScaleZ = this.data.portalScale.split(" ")[2];
 
       let scaleMultiplier = 1.3;
       let enlargedScaleX = initialScaleX * scaleMultiplier;
@@ -58,21 +49,31 @@ AFRAME.registerComponent("template-button", {
       
       let enlargedScale = enlargedScaleX + " " + enlargedScaleY + " " + enlargedScaleZ;
   
+
       //Add animations
+      //el.setAttribute(
+      //  "animation__mouseenter",
+      //  "property: scale; to: " + enlargedScale + "; dur: 300; startEvents: mouseenter"
+      //);
+      //el.setAttribute(
+      //  "animation__mouseenter",
+      //  "property: scale; to: " + enlargedScale + "; dur: 300; startEvents: pressedstarted"
+      //);  
+      //el.setAttribute(
+      //  "animation__mouseleave",
+      //  "property: scale; to: " + this.data.scale + "; dur: 300; startEvents: mouseleave"
+      //);
+      
+      //animate moving up from underground to the surface maintaining the x and z position
+      let currentPosition = el.getAttribute("position");
+      let endPosition = currentPosition.x + " " + 0 + " " + currentPosition.z;
       el.setAttribute(
-        "animation__mouseenter",
-        "property: scale; to: " + enlargedScale + "; dur: 300; startEvents: mouseenter"
+        "animation__moveup",
+        "property: position; to: " + endPosition + "; dur: 300; startEvents: showPortal"
       );
-      el.setAttribute(
-        "animation__mouseenter",
-        "property: scale; to: " + enlargedScale + "; dur: 300; startEvents: pressedstarted"
-      );
-  
-      el.setAttribute(
-        "animation__mouseleave",
-        "property: scale; to: " + this.data.scale + "; dur: 300; startEvents: mouseleave"
-      );
-  
+      
+
+      //animation for clicks
       el.setAttribute(
         "animation__click",
         "property: scale; to: 0 0 0; dur: 300; startEvents: cursor-click"
@@ -80,12 +81,6 @@ AFRAME.registerComponent("template-button", {
       el.setAttribute(
         "animation__click",
         "property: scale; to: 0 0 0; dur: 300; startEvents: pressedended"
-      );
-
-      //animate to move to 0 1.5 0  when pressed 
-      el.setAttribute(
-        "animation__click",
-        "property: position; to: 0 0 0; dur: 1200; startEvents: onLoadTemplate"
       );
   
       this.bindMethods();

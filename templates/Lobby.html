@@ -1,11 +1,41 @@
 <a-entity id="Lobby">
-  //environment //Lighting
+  //load environment gltf-model
+
+  //add plane and reflective plane
+  <a-plane
+    id="floor"
+    shadow="receive: true; cast:false;"
+    material="roughness:0.01;metalness:1;opacity:.25;shader:standard;emissive:#7d7d7d;"
+    position="0 0 0" rotation="-90 0 0" width="100" height="100" 
+    color="white">  </a-plane>
+ 
+  <a-plane 
+  id="reflective-floor-layer"
+  dynamic-reflection="fps:100; floor:true; size: 1024; allow-vr: true;"
+  shadow="receive: true; cast:false;"
+  material="roughness:0.01;metalness:1;opacity:.25;shader:standard;emissive:#7d7d7d;"
+  position="0 .01 0" rotation="-90 0 0" width="100" height="100" 
+  color="white"
+  >
+</a-plane>
+
+//sky
+<a-sky src="#Lobby-Sky" rotation="0 0 0"></a-sky>
+
+  //Lighting
+  //ambient light
+  <a-entity
+    id="ambient"
+    light="type: ambient; color: white; intensity: 1.5"
+  ></a-entity>s
+
+  //point lights
   <a-entity id="lighting">
     <a-entity
       id="Lobby-point"
-      light="type: point; color: white; intensity: .5; angle: 10; castShadow: true; distance: 20; decay: 1"
-      position="0 5 -4"
-      rotation="-90 0 0"
+      light="type: point; color: white; intensity: 2; castShadow: true; distance: 20; decay: 1; shadowBias: -0.002"
+      position="1 4.047 -6.76"
+      rotation="0 0 0"
     ></a-entity>
   </a-entity>  
   </a-entity>
@@ -13,61 +43,22 @@
   <a-entity
     id="menu"
     menu
-    position="0 1.5 0"
-    rotation="0 180 0"
-    animation__rotateLeft="property: rotation; to: 0 360 0; loop: true; dur: 10000; startEvents: menuRotate"
-    layout="align: center; type:circle; plane:xz; radius: 2; margin: 0.1; angle: 45"
+    position="0 1.5 0"sssssssssssssssssssd
   >
     <a-entity
       id="fsngButton"
       template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
-      position="0 0 0"
+      position="0 0 -5"
+      rotation="0 -15 0"
       class="template-button"
-      look-at="[camera]"
     >
     </a-entity>
-    <a-entity
-      id="fsngButton"
-      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
-      position="0 0 0"
-      class="template-button"
-      look-at="[camera]"
-    >
-    </a-entity>
-    <a-entity
-      id="fsngButton"
-      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
-      position="0 0 0"
-      class="template-button"
-      look-at="[camera]"
-    >
-    </a-entity>
-    <a-entity
-      id="fsngButton"
-      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
-      position="0 0 0"
-      class="template-button"
-      look-at="[camera]"
-    >
-    </a-entity>
-    <a-entity
-      id="fsngButton"
-      template-button="label: Focus-Stem Next-Gen; icon: #FSNG-Icon-360; target: focusStem; scale: 1 2 1"
-      position="0 0 0"
-      class="template-button"
-      look-at="[camera]"
-    >
-    </a-entity>
+   
     //Particle System
     <a-entity
       id="dust particles"
-      position="0 5 0"
-      particle-system="preset: dust; particleCount: 20"
-    ></a-entity>
-    <a-entity
-      id="snow particles"
-      position="0 20 0"
-      particle-system="preset: snow; particleCount: 2000"
+      position="0 0 0"
+      particle-system="preset: dust; particleCount: 200"
     ></a-entity>
   </a-entity>
 </a-entity>

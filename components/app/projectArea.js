@@ -24,6 +24,23 @@ AFRAME.registerComponent("project-area", {
         });
         el.appendChild(portalEl);
 
+        //create teleport area on the floor in front of the portal
+        const teleportAreaEl = (this.teleportAreaEl = document.createElement("a-image"));
+        teleportAreaEl.id = "teleportArea" + this.data.label;
+        teleportAreaEl.setAttribute("geometry", "primitive: circle; width: .1; height: .1; depth: .01");
+        teleportAreaEl.setAttribute("material", "color: #000; opacity: 0.5; transparent: true; side: both;");
+        teleportAreaEl.setAttribute("position", "0 -1.475 1.6");
+        teleportAreaEl.setAttribute("rotation", "-90 0 0");
+        //move player to the teleport area when clicked plus 1.5
+        teleportAreaEl.addEventListener("click", () => {
+            const cameraRig = document.querySelector("#mainCamera");
+            //teleport location is -2 in the z position of the project area
+            let teleportLocation = this.el.getAttribute("position").clone();
+            teleportLocation.y = 1.5
+            cameraRig.setAttribute("position", teleportLocation);
+        });
+        el.appendChild(teleportAreaEl);
+
         //Create images panel on the left
         const imagesPanelEl = (this.imagesPanelEl = document.createElement("a-image"));
         imagesPanelEl.id = "imagesPanel" + this.data.label;

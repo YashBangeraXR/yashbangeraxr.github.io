@@ -71,7 +71,7 @@ AFRAME.registerComponent("template-button", {
       //animation for show portal
       el.setAttribute(
         "animation__moveup",
-        "property: position; to: " + endPosition + "; dur: 1w000; startEvents: showPortal"
+        "property: position; to: " + endPosition + "; dur: 2000; startEvents: showPortal"
       );
       //animation for hide portal
       el.setAttribute(

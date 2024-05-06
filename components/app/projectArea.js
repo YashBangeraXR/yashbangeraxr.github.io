@@ -17,22 +17,20 @@ AFRAME.registerComponent("project-area", {
       let distance = worldTeleportPosition.distanceTo(cameraPos);
 
        // Check if within distance and if we should animate
-      if (distance <= 3 && !this.portalAnimatedIn) {
+      if (distance <= 3 && !this.animated) {
         this.portalEl.emit("showPortal");
-        this.portalAnimatedIn = true;
+        this.animated = true;
         console.log("showing portal");
       } 
-      else if (distance > 3 && this.portalAnimatedIn) {
-        // Optionally reset the animation if the camera moves away
-        this.portalAnimatedIn = false;
+      else if (distance > 3 && this.animated) {
+        this.animated = false;
         this.portalEl.emit("hidePortal");
-        // You can also trigger a reverse animation or other reset logic here
       }
     },
 
     init: function()
     {
-        this.portalAnimatedIn = false;
+        this.animated = false;
         //create the template button
         const el = this.el;
         const portalEl = (this.portalEl = document.createElement("a-entity"));

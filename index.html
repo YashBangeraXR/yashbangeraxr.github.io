@@ -26,7 +26,7 @@
     <script src="components/app/ui-manager.js"></script>
     <script src="components/app/ui-button.js"></script>
     <script src="components/app/projectArea.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kylebakerio/a-dynamic-reflection@1.1.0/dynamic-reflection.js"></script>
+    <script src="components/app/teleport-area.js"></script>
 
   </head>
   <body>
@@ -37,15 +37,21 @@
       id="scene-root"
       renderer="antialias: true; sortObjects: true; colorManagement: true; physicallyCorrectLights: true;"
       inspector="url: https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"
-      reflection="directionalLight: a-light#mainDirectional;"
-    >
-      >
-      <a-assets>
+      reflection="directionalLight:a-light#dirlight;"
+    >        
+
+      <a-assets>      
+
         <img id="floor-texture" src="assets/textures/floor.jpg" />
         <img
           id="FSNG-Icon-360"
           crossorigin="anonymous"
           src="assets/icons/fsng_icon.png"
+        />
+        <img
+          id="Lobby-360"
+          crossorigin="anonymous"
+          src="assets/icons/Lobby-360.png"
         />
         <a-asset-item id="FSNG" src="assets/models/FSNG.glb"></a-asset-item>
         <a-asset-item id="Gallery" src="assets/models/Art-Gallery.glb"></a-asset-item>
@@ -72,13 +78,8 @@
       </a-assets>
       
       //scene directional light
-      <a-light
-        id="mainDirectional"
-        type="directional"
-        light="castShadow:false"
-        position="0 2.25 .4"
-        rotation="-90 0 0"
-        intensity="1">  </a-light>
+      <a-light id="dirlight" intensity="1" light="castShadow:true;type:directional" position="1 1 1"></a-light>
+
       
 
       //Load template container and Lobby template

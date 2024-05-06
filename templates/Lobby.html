@@ -2,15 +2,9 @@
   //load environment gltf-model
 
   //add plane and reflective plane
- 
-  <a-plane 
-  id="reflective-floor-layer"
-  dynamic-reflection="fps:100; floor:true; size: 1024; allow-vr: true;"
-  shadow="receive: true; cast:false;"
-  material="roughness:0.01;metalness:1;opacity:.25;shader:standard;emissive:#7d7d7d;"
-  position="0 .01 0" rotation="-90 0 0" width="100" height="100" 
-  color="white">
-  </a-plane>
+  
+  //create cube with reflection
+    
 
 //sky
 <a-sky src="#Lobby-Sky" rotation="0 0 0"></a-sky>
@@ -44,8 +38,8 @@
                     icon: #FSNG-Icon-360; 
                     target: focusStem; 
                     portalScale: 1.5 2.85 1"
-      position="3sa 0 -5"
-      rotation="0 50s 0"
+      position="3 0 -20"
+      rotation="0 0 0"
       class="template-button"
     >
     </a-entity>

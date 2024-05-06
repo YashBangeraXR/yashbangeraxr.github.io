@@ -67,11 +67,17 @@ AFRAME.registerComponent("template-button", {
       //animate moving up from underground to the surface maintaining the x and z position
       let currentPosition = el.getAttribute("position");
       let endPosition = currentPosition.x + " " + 0 + " " + currentPosition.z;
+
+      //animation for show portal
       el.setAttribute(
         "animation__moveup",
-        "property: position; to: " + endPosition + "; dur: 300; startEvents: showPortal"
+        "property: position; to: " + endPosition + "; dur: 1w000; startEvents: showPortal"
       );
-      
+      //animation for hide portal
+      el.setAttribute(
+        "animation__movedown",
+        "property: position; to: " + currentPosition.x + " " + -10 + " " + currentPosition.z + "; dur: 1000; startEvents: hidePortal"
+      );     
 
       //animation for clicks
       el.setAttribute(
@@ -106,7 +112,7 @@ AFRAME.registerComponent("template-button", {
     stateChanged: function () {},
   
     onPressedStarted: function () {
-      var el = this.el;
+      const el = this.el;
       console.log("onPressedStarted " + this.data.target);
       const eventmanager = document.querySelector("#event-manager");
       console.log(" template button eventmanager: ", eventmanager);

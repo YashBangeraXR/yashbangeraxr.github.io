@@ -9,8 +9,30 @@ AFRAME.registerComponent("project-area", {
       portalScale: { default: "0.25 0.25 0.25" },
     },
 
+    tick: function() {
+      // Calculate distance between trigger and the camera
+      let worldTeleportPosition = new THREE.Vector3();
+      worldTeleportPosition.setFromMatrixPosition(this.teleportAreaEl.object3D.matrixWorld);
+      let cameraPos = this.el.sceneEl.camera.el.object3D.position;
+      let distance = worldTeleportPosition.distanceTo(cameraPos);
+
+       // Check if within distance and if we should animate
+      if (distance <= 3 && !this.portalAnimatedIn) {
+        this.portalEl.emit("showPortal");
+        this.portalAnimatedIn = true;
+        console.log("showing portal");
+      } 
+      else if (distance > 3 && this.portalAnimatedIn) {
+        // Optionally reset the animation if the camera moves away
+        this.portalAnimatedIn = false;
+        this.portalEl.emit("hidePortal");
+        // You can also trigger a reverse animation or other reset logic here
+      }
+    },
+
     init: function()
     {
+        this.portalAnimatedIn = false;
         //create the template button
         const el = this.el;
         const portalEl = (this.portalEl = document.createElement("a-entity"));
@@ -22,23 +44,14 @@ AFRAME.registerComponent("project-area", {
             icon: this.data.icon,
             label: this.data.label,
         });
+        portalEl.setAttribute("position", "0 -10 0");
         el.appendChild(portalEl);
-
+        
         //create teleport area on the floor in front of the portal
-        const teleportAreaEl = (this.teleportAreaEl = document.createElement("a-image"));
+        const teleportAreaEl = (this.teleportAreaEl = document.createElement("a-entity"));
         teleportAreaEl.id = "teleportArea" + this.data.label;
-        teleportAreaEl.setAttribute("geometry", "primitive: circle; width: .1; height: .1; depth: .01");
-        teleportAreaEl.setAttribute("material", "color: #000; opacity: 0.5; transparent: true; side: both;");
-        teleportAreaEl.setAttribute("position", "0 -1.475 1.6");
-        teleportAreaEl.setAttribute("rotation", "-90 0 0");
-        //move player to the teleport area when clicked plus 1.5
-        teleportAreaEl.addEventListener("click", () => {
-            const cameraRig = document.querySelector("#mainCamera");
-            //teleport location is -2 in the z position of the project area
-            let teleportLocation = this.el.getAttribute("position").clone();
-            teleportLocation.y = 1.5
-            cameraRig.setAttribute("position", teleportLocation);
-        });
+        teleportAreaEl.setAttribute("teleport-area", { color: "#000" });        
+        teleportAreaEl.setAttribute("position", "0 -1.9 2.5");       
         el.appendChild(teleportAreaEl);
 
         //Create images panel on the left

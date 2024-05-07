@@ -7,6 +7,7 @@
     src="#cc-icon"
     position="0 2 -5"
     scale="1.5 1.5 1.5"
+    material="shader: standard; transparent: true; opacity: 0.8; side: double; alphaTest: 0.5"
   ></a-image>   
 
 //sky
@@ -17,7 +18,7 @@
   <a-entity
     id="ambient"
     light="type: ambient; color: white; intensity: 1.5"
-  ></a-entity>s
+  ></a-entity>
 
   //point lights
   <a-entity id="lighting">
@@ -28,13 +29,21 @@
       rotation="0 0 0"
     ></a-entity>
   </a-entity>  
-  </a-entity>
+  </a-entity> 
+   
+  //Particle System
+  <a-entity
+    id="dust particles"
+    position="0 0 0"
+    particle-system="preset: dust; particleCount: 200"
+  ></a-entity>
   //MainMenu
   <a-entity
-    id="menu"
+    id="projectMenu"
     menu
-    position="0 1.5 0"
-    
+    position="0 1.5 -5"
+    rotation="0 180 0"
+    layout="type: circle; radius: 7.5; plane: xz; angle: 90"
   >
     <a-entity
       id="fsngArea"
@@ -47,12 +56,27 @@
       class="template-button"
     >
     </a-entity>
-   
-    //Particle System
     <a-entity
-      id="dust particles"
-      position="0 0 0"
-      particle-system="preset: dust; particleCount: 200"
-    ></a-entity>
+      id="fsngArea"
+      project-area="label: Focus-Stem Next-Gen; 
+                    icon: #FSNG-Icon-360; 
+                    target: focusStem; 
+                    portalScale: 1.5 2.85 1"
+      position="3 0 -5"
+      rotation="0 0 0"
+      class="template-button"
+    >
+    </a-entity>
+    <a-entity
+      id="fsngArea"
+      project-area="label: Focus-Stem Next-Gen; 
+                    icon: #FSNG-Icon-360; 
+                    target: focusStem; 
+                    portalScale: 1.5 2.85 1"
+      position="3 0 -5"
+      rotation="0 0 0"
+      class="template-button"
+    >
+    </a-entity>
   </a-entity>
 </a-entity>

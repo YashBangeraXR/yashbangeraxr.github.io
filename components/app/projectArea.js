@@ -196,5 +196,9 @@ AFRAME.registerComponent("project-area", {
         // Append Results Parent to 'el' or any desired parent element
         descriptionPanelEl.appendChild(resultsParent);
 
+        //rotate entire project to face the parent element
+        const parent = document.querySelector("#projectMenu");
+        this.el.setAttribute("look-at", "#projectMenu");
+
     },
 });

@@ -1,19 +1,13 @@
 <a-entity id="Lobby">
+  //add reflective white plane floor
+ 
   //add cc-logo image
   <a-image
     id="cc-logo"
     src="#cc-icon"
     position="0 2 -5"
     scale="1.5 1.5 1.5"
-  ></a-image>
-  //add reflective white plane floor
-  <a-plane
-    id="floor"
-    material="color: white; metalness: 1; roughness: 0.1d"
-    position="0 0 0"
-    rotation="-90 0 0"
-    scale="100 100 1"
-  ></a-plane>    
+  ></a-image>   
 
 //sky
 <a-sky src="#Lobby-Sky" rotation="0 0 0"></a-sky>
@@ -40,6 +34,7 @@
     id="menu"
     menu
     position="0 1.5 0"
+    
   >
     <a-entity
       id="fsngArea"
@@ -47,7 +42,7 @@
                     icon: #FSNG-Icon-360; 
                     target: focusStem; 
                     portalScale: 1.5 2.85 1"
-      position="3 0 -20"
+      position="3 0 -5"
       rotation="0 0 0"
       class="template-button"
     >

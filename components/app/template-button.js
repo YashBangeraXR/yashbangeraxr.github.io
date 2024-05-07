@@ -22,21 +22,36 @@ AFRAME.registerComponent("template-button", {
       const backgroundEl = (this.backgroundEl = document.createElement("a-entity"));
       this.el.appendChild(backgroundEl);
       backgroundEl.setAttribute("geometry", "primitive: plane; width: 1.1; height: 1.05; depth: .01");
-      backgroundEl.setAttribute("material", "shader: flat; color: white");
+      backgroundEl.setAttribute("material", "shader: flat; color: white; metalness: 1");
       backgroundEl.setAttribute("position", "0 0 -.01");
 
-      let initialScaleX = this.data.portalScale.split(" ")[0];
-      let initialScaleY = this.data.portalScale.split(" ")[1];
-      let initialScaleZ = this.data.portalScale.split(" ")[2];
+      //Create enter space button      
+      // Create the button entity
+      const enterButton = (this.enterButton = document.createElement('a-box'));
+      enterButton.setAttribute('depth', '0.1'); // Thickness of the button
+      enterButton.setAttribute('height', '0.5'); // Height of the button
+      enterButton.setAttribute('width', '2'); // Width of the button
+      enterButton.setAttribute("material", "color: #89b7d7; opacity: 0.9; transparent: true; metalness: 1");
 
-      let scaleMultiplier = 1.3;
-      let enlargedScaleX = initialScaleX * scaleMultiplier;
-      let enlargedScaleY = initialScaleY * scaleMultiplier;
-      let enlargedScaleZ = initialScaleZ * scaleMultiplier;
+      // Add a text label to the button
+      const enterButtonText = (this.enterButtonText = document.createElement('a-text'));
+      enterButtonText.setAttribute('value', 'Enter Space');
+      enterButtonText.setAttribute('color', '#FFFFFF');
+      enterButtonText.setAttribute('align', 'center');
+      enterButtonText.setAttribute('position', '0 0 0.05'); // Position text slightly above the button to be visible
+
+      // Append the text and button to the plane, then the plane to the scene
+      enterButton.appendChild(enterButtonText);
+      el.appendChild(enterButton);
+
       
-      let enlargedScale = enlargedScaleX + " " + enlargedScaleY + " " + enlargedScaleZ;
-  
+      //set position and scale of buttonbg
+      enterButton.setAttribute('position', '0 -.2 1.5');
+      enterButton.setAttribute('rotation', '-45 0 0');
+      enterButton.setAttribute('scale', '0.2 0.2 0.2');
 
+      
+      
       //Add animations
       //el.setAttribute(
       //  "animation__mouseenter",
@@ -75,6 +90,29 @@ AFRAME.registerComponent("template-button", {
         "animation__click",
         "property: scale; to: 0 0 0; dur: 300; startEvents: pressedended"
       );
+
+      //animate button color change on press started and ended
+      enterButton.setAttribute(
+        "animation__pressstarted",
+        "property: color; to: #0f0ww; dur: 300; startEvents: pressedstarted"
+      );
+      enterButton.setAttribute(
+        "animation__pressstarted",
+        "property: color; to: #0f0; dur: 300; startEvents: mouseenter"
+      );
+      enterButton.setAttribute(
+        "animation__pressended",
+        "property: color; to: #89b7d7; dur: 300; startEvents: pressedended"
+      );
+      enterButton.setAttribute(
+        "animation__pressended",
+        "property: color; to: #89b7d7; dur: 300; startEvents: mouseleave"
+      );
+      enterButton.setAttribute(
+        "animation__click",
+        "property: color; to: #0f0; dur: 300; startEvents: click"
+      );
+
   
       this.bindMethods();
       this.el.addEventListener("stateadded", this.stateChanged);
@@ -82,6 +120,12 @@ AFRAME.registerComponent("template-button", {
       this.el.addEventListener("pressedstarted", this.onPressedStarted);
       this.el.addEventListener("pressedended", this.onPressedEnded);
       this.el.addEventListener("click", this.onPressedStarted);
+      //add event listener for enter button
+      this.enterButton.addEventListener("stateadded", this.stateChanged);
+      this.enterButton.addEventListener("stateremoved", this.stateChanged);
+      this.enterButton.addEventListener("pressedstarted", this.onPressedStarted);
+      this.enterButton.addEventListener("pressedended", this.onPressedEnded);
+      this.enterButton.addEventListener("click", this.onPressedStarted);
     },
   
     bindMethods: function () {

@@ -49,7 +49,7 @@ AFRAME.registerComponent("project-area", {
         const labelEl = (this.labelEl = document.createElement("a-entity"));
         labelEl.setAttribute("text", {
           value: this.data.label,
-          color: "black",
+          color: "#89b7d7",
           align: "center",
         });
         labelEl.id = "label" + this.data.label;
@@ -69,7 +69,7 @@ AFRAME.registerComponent("project-area", {
         const imagesPanelEl = (this.imagesPanelEl = document.createElement("a-image"));
         imagesPanelEl.id = "imagesPanel" + this.data.label;
         imagesPanelEl.setAttribute("geometry", "width: 1.65; height: 1.25");
-        imagesPanelEl.setAttribute("material", "color: #000; opacity: 0.5; transparent: true; side: double;");
+        imagesPanelEl.setAttribute("material", "color: #000; opacity: 0.5; transparent: true; side: double; metalness: 1");
         imagesPanelEl.setAttribute("position", "-2 0 .75");
         imagesPanelEl.setAttribute("rotation", "0 30 0");
         imagesPanelEl.setAttribute("scale", "1.5 1.5 1");
@@ -97,7 +97,7 @@ AFRAME.registerComponent("project-area", {
         const descriptionPanelEl = (this.descriptionPanelEl = document.createElement("a-image"));
         descriptionPanelEl.id = "descriptionPanel" + this.data.label;
         descriptionPanelEl.setAttribute("geometry", "width: 1.65; height: 1.25");
-        descriptionPanelEl.setAttribute("material", "color: #000; opacity: 0.5; transparent: true; side: double;");
+        descriptionPanelEl.setAttribute("material", "color: #000; opacity: 0.5; transparent: true; side: double; metalness: 1");
         descriptionPanelEl.setAttribute("position", "2 0 .75");
         descriptionPanelEl.setAttribute("rotation", "0 -30 0");
         descriptionPanelEl.setAttribute("scale", "1.5 1.5 1");

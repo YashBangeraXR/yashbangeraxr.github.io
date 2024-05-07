@@ -44,6 +44,19 @@ AFRAME.registerComponent("project-area", {
         });
         portalEl.setAttribute("position", "0 -10 0");
         el.appendChild(portalEl);
+
+          //set label properties
+        const labelEl = (this.labelEl = document.createElement("a-entity"));
+        labelEl.setAttribute("text", {
+          value: this.data.label,
+          color: "black",
+          align: "center",
+        });
+        labelEl.id = "label" + this.data.label;
+        labelEl.setAttribute("scale", "10 10 10");
+        labelEl.setAttribute("position", "0 2 0");
+        labelEl.setAttribute("shadow", "receive: true; cast: true");
+        this.el.appendChild(labelEl);
         
         //create teleport area on the floor in front of the portal
         const teleportAreaEl = (this.teleportAreaEl = document.createElement("a-entity"));

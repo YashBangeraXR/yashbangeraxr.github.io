@@ -24,19 +24,6 @@ AFRAME.registerComponent("template-button", {
       backgroundEl.setAttribute("geometry", "primitive: plane; width: 1.1; height: 1.05; depth: .01");
       backgroundEl.setAttribute("material", "shader: flat; color: white");
       backgroundEl.setAttribute("position", "0 0 -.01");
-  
-      //set label properties
-      const labelEl = (this.labelEl = document.createElement("a-entity"));
-      this.el.appendChild(labelEl);
-      labelEl.setAttribute("text", {
-        value: this.data.label,
-        color: "white",
-        align: "center",
-      });
-      labelEl.setAttribute("scale", "2 2 2");
-      labelEl.setAttribute("position", "0 -.4 0");
-      labelEl.setAttribute("shadow", "receive: true; cast: true");
-
 
       let initialScaleX = this.data.portalScale.split(" ")[0];
       let initialScaleY = this.data.portalScale.split(" ")[1];
@@ -103,10 +90,9 @@ AFRAME.registerComponent("template-button", {
       this.onPressedEnded = this.onPressedEnded.bind(this);
     },
 
-    update: function (oldData) {
-      if (oldData.label !== this.data.label) {
-        this.labelEl.setAttribute("text", "value", this.data.label);
-      }
+    update: function (oldData) 
+    {
+     
     },
   
     stateChanged: function () {},

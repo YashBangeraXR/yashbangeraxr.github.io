@@ -1,10 +1,19 @@
 <a-entity id="Lobby">
-  //load environment gltf-model
-
-  //add plane and reflective plane
-  
-  //create cube with reflection
-    
+  //add cc-logo image
+  <a-image
+    id="cc-logo"
+    src="#cc-icon"
+    position="0 2 -5"
+    scale="1.5 1.5 1.5"
+  ></a-image>
+  //add reflective white plane floor
+  <a-plane
+    id="floor"
+    material="color: white; metalness: 1; roughness: 0.1d"
+    position="0 0 0"
+    rotation="-90 0 0"
+    scale="100 100 1"
+  ></a-plane>    
 
 //sky
 <a-sky src="#Lobby-Sky" rotation="0 0 0"></a-sky>
@@ -30,7 +39,7 @@
   <a-entity
     id="menu"
     menu
-    position="0 1.5 0"sssssssssssssssssssd
+    position="0 1.5 0"
   >
     <a-entity
       id="fsngArea"

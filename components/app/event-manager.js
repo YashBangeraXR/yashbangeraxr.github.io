@@ -28,7 +28,10 @@ AFRAME.registerComponent("event-manager", {
         console.log("Template Loaded: " + APP_DATA.selectedApp.templatePath);
         //fade to clear
         setTimeout(() => {
-          //fade to clear
+          //reset camera position to 0 1.5 0 
+          const cameraRig = document.querySelector("#mainCamera");
+          //fade to cleardd
+          cameraRig.setAttribute("position", "0 1.5 0");    
           fadeEl.emit("fadeToClear");}, 500);
           this.el.emit("onUpdateUI");
       });
@@ -40,7 +43,7 @@ AFRAME.registerComponent("event-manager", {
     
     onSceneLoaded: function () {
       this.bindMethods();
-      console.log("event-manager: onSceneLoaded");    
+      console.log("event-manager: onSceneLoaded");
     },
     
     setTemplate: function (event) {      

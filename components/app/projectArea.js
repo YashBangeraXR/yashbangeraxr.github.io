@@ -49,7 +49,7 @@ AFRAME.registerComponent("project-area", {
         const teleportAreaEl = (this.teleportAreaEl = document.createElement("a-entity"));
         teleportAreaEl.id = "teleportArea" + this.data.label;
         teleportAreaEl.setAttribute("teleport-area", { color: "#000" });        
-        teleportAreaEl.setAttribute("position", "0 -1.9 2.5");       
+        teleportAreaEl.setAttribute("position", "0 -1.6 2.5");       
         el.appendChild(teleportAreaEl);
 
         //Create images panel on the left

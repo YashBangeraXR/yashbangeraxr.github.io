@@ -1,6 +1,6 @@
 <a-entity id="Lobby">
   //ambient light
-  <a-light id="ambient" type="ambient" light="color: #ffffff; intensity: 1">
+  <a-light id="ambient" type="ambient" light="color: #ffffff; intensity: 3.2">
   </a-light>
 
   <a-light
@@ -22,6 +22,7 @@
     height="50"
     color="#FFFFFF"
     shadow="cast: false; receive: true"
+    material="shader: standard; roughness: 1; metalness: .1; side: double"
   ></a-plane>
 
   //add cc-logo image
@@ -32,6 +33,7 @@
     scale="1.5 1.5 1.5"
     material="shader: standard; transparent: true; opacity: 0.8; side: double; alphaTest: 0.5"
     shadow="cast: true; receive: false"
+    animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
   >
   </a-image>
 
@@ -42,7 +44,7 @@
   <a-entity
     id="dust particles"
     position="0 0 0"
-    particle-system="preset: dust; particleCount: 100000; color: #969c9e; size: 0.2"
+    particle-system="preset: dust; particleCount: 100000; color: #969c9e; size: 0.1"
   ></a-entity>
   //MainMenu
   <a-entity

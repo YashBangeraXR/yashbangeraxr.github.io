@@ -48,23 +48,7 @@ AFRAME.registerComponent("template-button", {
       //set position and scale of buttonbg
       enterButton.setAttribute('position', '0 -.2 1.5');
       enterButton.setAttribute('rotation', '-45 0 0');
-      enterButton.setAttribute('scale', '0.2 0.2 0.2');
-
-      
-      
-      //Add animations
-      //el.setAttribute(
-      //  "animation__mouseenter",
-      //  "property: scale; to: " + enlargedScale + "; dur: 300; startEvents: mouseenter"
-      //);
-      //el.setAttribute(
-      //  "animation__mouseenter",
-      //  "property: scale; to: " + enlargedScale + "; dur: 300; startEvents: pressedstarted"
-      //);  
-      //el.setAttribute(
-      //  "animation__mouseleave",
-      //  "property: scale; to: " + this.data.scale + "; dur: 300; startEvents: mouseleave"
-      //);
+      enterButton.setAttribute('scale', '0.2 0.2 0.2');      
       
       //animate moving up from underground to the surface maintaining the x and z position
       let currentPosition = el.getAttribute("position");

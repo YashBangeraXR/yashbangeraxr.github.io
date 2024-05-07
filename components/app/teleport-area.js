@@ -16,7 +16,9 @@ AFRAME.registerComponent("teleport-area",
         //create cylinder to show teleport area
         const el = this.el;
         this.el.setAttribute("geometry", "primitive: cylinder; radius: 1; height: 0.1");
-        this.el.setAttribute("material", "color: #000; opacity: 0.5; transparent: true; side: both; metalness: 1");
+        this.el.setAttribute("material", "color:" + this.data.color);
+        
+        this.el.setAttribute("shadow", "receive: true; cast: true");
 
         //animate scale on mouse enter and leave
         el.setAttribute("animation__scale_mouseenter", "property: scale; to: 1.1 1.1 1.1; dur: 300; startEvents: mouseenter");

@@ -1,6 +1,29 @@
 <a-entity id="Lobby">
-  //add reflective white plane floor
- 
+  //ambient light
+  <a-light id="ambient" type="ambient" light="color: #ffffff; intensity: 1">
+  </a-light>
+
+  <a-light
+    id="point"
+    type="point"
+    light="castShadow:true; shadowBias: -0.001"
+    position="0 5 -2"
+    intensity="1"
+    distance="50"
+    decay="0"
+  >
+  </a-light>
+
+  <!-- Large reflective floor -->
+  <a-plane
+    position="0 0 0"
+    rotation="-90 0 0"
+    width="50"
+    height="50"
+    color="#FFFFFF"
+    shadow="cast: false; receive: true"
+  ></a-plane>
+
   //add cc-logo image
   <a-image
     id="cc-logo"
@@ -8,34 +31,18 @@
     position="0 2 -5"
     scale="1.5 1.5 1.5"
     material="shader: standard; transparent: true; opacity: 0.8; side: double; alphaTest: 0.5"
-  ></a-image>   
+    shadow="cast: true; receive: false"
+  >
+  </a-image>
 
-//sky
-<a-sky src="#Lobby-Sky" rotation="0 0 0"></a-sky>
+  //sky
+  <a-sky src="#Lobby-Sky" rotation="0 0 0"></a-sky>
 
-  //Lighting
-  //ambient light
-  <a-entity
-    id="ambient"
-    light="type: ambient; color: white; intensity: 1.5"
-  ></a-entity>
-
-  //point lights
-  <a-entity id="lighting">
-    <a-entity
-      id="Lobby-point"
-      light="type: point; color: white; intensity: 2; castShadow: true; distance: 20; decay: 1; shadowBias: -0.002"
-      position="0 0 0"
-      rotation="0 0 0"
-    ></a-entity>
-  </a-entity>  
-  </a-entity> 
-   
   //Particle System
   <a-entity
     id="dust particles"
     position="0 0 0"
-    particle-system="preset: dust; particleCount: 200"
+    particle-system="preset: dust; particleCount: 100000; color: #969c9e; size: 0.2"
   ></a-entity>
   //MainMenu
   <a-entity

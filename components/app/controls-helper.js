@@ -4,10 +4,7 @@ AFRAME.registerComponent("controls-helper", {
       window.addEventListener("enter-vr", (e) => {
         if (AFRAME.utils.device.checkHeadsetConnected()) {
           console.log("addEventListener enter-vr");
-  
-          //turn off curor in VR
-          const cursorEl = document.querySelector("#cursor");
-          cursorEl.setAttribute("visible", false);
+           
         }
       });
     },

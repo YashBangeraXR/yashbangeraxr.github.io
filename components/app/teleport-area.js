@@ -36,6 +36,7 @@ AFRAME.registerComponent("teleport-area",
 
     onInteract: function()
     {
+        console.log("Teleporting...");
         //teleport the camera rig to the teleport area
         // Get the camera rig
         const cameraRig = document.querySelector("#mainCamera");

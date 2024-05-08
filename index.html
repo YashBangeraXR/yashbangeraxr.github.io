@@ -115,11 +115,11 @@
       //Hand tracking controls
       <a-entity
         id="hand-tracking-left"
-        hand-tracking-controls="hand: left"
+        hand-tracking-controls="hand: left; modelColor: #89b7d7"
       ></a-entity>
       <a-entity
         id="hand-tracking-right"
-        hand-tracking-controls="hand: right"
+        hand-tracking-controls="hand: right; modelColor: #89b7d7"
       ></a-entity>
 
       //Laser controls for controllers
@@ -127,12 +127,6 @@
         controller-connected
         id="right-hand-laser"
         laser-controls="hand: right"
-        raycaster="lineColor: red; lineOpacity: 0.5"
-      ></a-entity>
-      <a-entity
-        controller-connected
-        id="left-hand-laser"
-        laser-controls="hand: left"
         raycaster="lineColor: red; lineOpacity: 0.5"
       ></a-entity>
 

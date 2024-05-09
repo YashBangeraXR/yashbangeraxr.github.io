@@ -51,19 +51,19 @@ AFRAME.registerComponent("template-button", {
       enterButton.setAttribute('scale', '0.2 0.2 0.2');      
       
       //animate moving up from underground to the surface maintaining the x and z position
-      let currentPosition = el.getAttribute("position");
-      let endPosition = currentPosition.x + " " + 0 + " " + currentPosition.z;
+      //let currentPosition = el.getAttribute("position");
+      //let endPosition = currentPosition.x + " " + 0 + " " + currentPosition.z;
 
       //animation for show portal
-      el.setAttribute(
-        "animation__moveup",
-        "property: position; to: " + endPosition + "; dur: 2000; startEvents: showPortal"
-      );
-      //animation for hide portal
-      el.setAttribute(
-        "animation__movedown",
-        "property: position; to: " + currentPosition.x + " " + -10 + " " + currentPosition.z + "; dur: 1000; startEvents: hidePortal"
-      );     
+      // el.setAttribute(
+      //   "animation__moveup",
+      //   "property: position; to: " + endPosition + "; dur: 2000; startEvents: showPortal"
+      // );
+      // //animation for hide portal
+      // el.setAttribute(
+      //   "animation__movedown",
+      //   "property: position; to: " + currentPosition.x + " " + -10 + " " + currentPosition.z + "; dur: 1000; startEvents: hidePortal"
+      // );     
 
       //animation for clicks
       el.setAttribute(

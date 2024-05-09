@@ -42,7 +42,7 @@ AFRAME.registerComponent("project-area", {
             icon: this.data.icon,
             label: this.data.label,
         });
-        portalEl.setAttribute("position", "0 -10 0");
+        ///portalEl.setAttribute("position", "0 -10 0");
         el.appendChild(portalEl);
 
           //set label properties

@@ -26,6 +26,7 @@ AFRAME.registerComponent("ui-manager", {
         this.lobbyUI = document.querySelector("#Lobby-UI");
         this.leftArrowButton = document.querySelector("#left-arrow-button");
         this.rightArrowButton = document.querySelector("#right-arrow-button");
+        this.projectMenu = document.querySelector("#projectMenu");
 
         //add ui-buton events
         this.backButton = document.querySelector("#back-button");

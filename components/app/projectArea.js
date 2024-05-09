@@ -114,7 +114,7 @@ AFRAME.registerComponent("project-area", {
         var appTitle = document.createElement('a-text');
         appTitle.setAttribute('id', 'AppTitle');
         appTitle.setAttribute('color', '#fff');
-        appTitle.setAttribute('position', '-.7 .45 0');
+        appTitle.setAttribute('position', '-.7 .45 0.1');
         appTitle.setAttribute('width', '.9');
         appTitle.setAttribute('text', 'value:' + appTarget.name );
         headerParent.appendChild(appTitle);
@@ -123,7 +123,7 @@ AFRAME.registerComponent("project-area", {
         var appSubtitle = document.createElement('a-text');
         appSubtitle.setAttribute('id', 'AppSubtitle');
         appSubtitle.setAttribute('color', '#fff');
-        appSubtitle.setAttribute('position', '-.7 .4 0');
+        appSubtitle.setAttribute('position', '-.7 .4 0.1');
         appSubtitle.setAttribute('width', '.55');
         appSubtitle.setAttribute('text', 'value:' + appTarget.description);
         headerParent.appendChild(appSubtitle);
@@ -134,14 +134,14 @@ AFRAME.registerComponent("project-area", {
         // Challenge Parent
         var challengeParent = document.createElement('a-entity');
         challengeParent.setAttribute('id', 'Challenge Parent');
-        challengeParent.setAttribute('position', '0 .3 0');
+        challengeParent.setAttribute('position', '0 .3 0.1');
 
         // ChallengeLabel
         var challengeLabel = document.createElement('a-text');
         challengeLabel.setAttribute('id', 'ChallengeLabel');
         challengeLabel.setAttribute('color', '#fff');
         challengeLabel.setAttribute('width', '.8');
-        challengeLabel.setAttribute('position', '-.7 0 0');
+        challengeLabel.setAttribute('position', '-.7 0 0.1');
         challengeLabel.setAttribute('text', 'value: The Challenge;');
         challengeParent.appendChild(challengeLabel);
 
@@ -149,7 +149,7 @@ AFRAME.registerComponent("project-area", {
         var theChallenge = document.createElement('a-text');
         theChallenge.setAttribute('id', 'TheChallenge');
         theChallenge.setAttribute('color', '#fff');
-        theChallenge.setAttribute('position', '-.45 0 0');
+        theChallenge.setAttribute('position', '-.45 0 0.1');
         theChallenge.setAttribute('width', '1.24');
         theChallenge.setAttribute('wrap-count', '70');
         theChallenge.setAttribute('text', 'align: left; anchor: left; baseline: top; value:' + appTarget.challenge);
@@ -161,14 +161,14 @@ AFRAME.registerComponent("project-area", {
         // Approach Parent
         var approachParent = document.createElement('a-entity');
         approachParent.setAttribute('id', 'Approach Parent');
-        approachParent.setAttribute('position', '0 0.05 0');
+        approachParent.setAttribute('position', '0 0.05 0.1');
 
         // ApproachLabel
         var approachLabel = document.createElement('a-text');
         approachLabel.setAttribute('id', 'ApproachLabel');
         approachLabel.setAttribute('color', '#fff');
         approachLabel.setAttribute('width', '.7');
-        approachLabel.setAttribute('position', '-.7 0 0');
+        approachLabel.setAttribute('position', '-.7 0 0.1');
         approachLabel.setAttribute('text', 'value: The Approach');
         approachParent.appendChild(approachLabel);
 
@@ -176,7 +176,7 @@ AFRAME.registerComponent("project-area", {
         var theApproach = document.createElement('a-text');
         theApproach.setAttribute('id', 'TheApproach');
         theApproach.setAttribute('color', '#fff');
-        theApproach.setAttribute('position', '-.45 0 0');
+        theApproach.setAttribute('position', '-.45 0 0.1');
         theApproach.setAttribute('width', '1.24');
         theApproach.setAttribute('wrap-count', '70');
         theApproach.setAttribute('text', 'align: left; anchor: left; baseline: top; value:' + appTarget.approach);
@@ -188,14 +188,14 @@ AFRAME.registerComponent("project-area", {
         // Results Parent
         var resultsParent = document.createElement('a-entity');
         resultsParent.setAttribute('id', 'Results Parent');
-        resultsParent.setAttribute('position', '0 -.27 0');
+        resultsParent.setAttribute('position', '0 -.27 0.1');
 
         // ResultsLabel
         var resultsLabel = document.createElement('a-text');
         resultsLabel.setAttribute('id', 'ResultsLabel');
         resultsLabel.setAttribute('color', '#fff');
         resultsLabel.setAttribute('width', '.7');
-        resultsLabel.setAttribute('position', '-.7 0 0');
+        resultsLabel.setAttribute('position', '-.7 0 0.1');
         resultsLabel.setAttribute('text', 'value: The Results');
         resultsParent.appendChild(resultsLabel);
 
@@ -203,7 +203,7 @@ AFRAME.registerComponent("project-area", {
         var theResults = document.createElement('a-text');
         theResults.setAttribute('id', 'TheResults');
         theResults.setAttribute('color', '#fff');
-        theResults.setAttribute('position', '-.45 0 0');
+        theResults.setAttribute('position', '-.45 0 0.1');
         theResults.setAttribute('width', '1.24');
         theResults.setAttribute('wrap-count', '70');
         theResults.setAttribute('text', 'align: left; anchor: left; baseline: top; value:' + appTarget.results);

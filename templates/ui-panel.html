@@ -160,4 +160,36 @@
       position="0 0 0"
     ></a-entity>
   </a-entity>
+  <a-entity id="Lobby-UI">
+    <!-- Background Image -->
+    <a-image
+      id="button-panel-background"
+      src="#panel-background"
+      material="color: #000; opacity: 0.5; transparent: true; side: double;"
+      position="0 0 0"
+      rotation="0 0 0"
+      scale=".25 .25 .15"
+      width="1"
+      height=".5"
+    >
+      <!-- Left Arrow Button -->
+      <a-image
+        id="left-arrow-button"
+        src="#arrow-left-button"
+        position="-0.2 0 0.1"
+        scale="0.2 0.2 0.2"
+      >
+      </a-image>
+
+      <!-- Right Arrow Button -->
+      <a-image
+        id="right-arrow-button"
+        src="#arrow-left-button"
+        position="0.2 0 0.1"
+        scale="0.2 0.2 0.2"
+        rotation="0 180 0"
+      >
+      </a-image>
+    </a-image>
+  </a-entity>
 </a-entity>

@@ -27,6 +27,7 @@
     <script src="components/app/ui-button.js"></script>
     <script src="components/app/projectArea.js"></script>
     <script src="components/app/teleport-area.js"></script>
+    <script src="https://gftruj.github.io/hand.tracking.controls.extras/dist/aframe-hand-tracking-controls-extras.js"></script>
 
   </head>
   <body>
@@ -47,6 +48,7 @@
           crossorigin="anonymous"
           src="assets/icons/fsng_icon.png"
         />
+        <img id="left-arrow" src="assets/icons/arrow-left2.png" />
         <img
           id="Lobby-360"
           crossorigin="anonymous"
@@ -76,7 +78,45 @@
         ></img>
       </a-assets>
       
-      
+      //XR Rig
+      <a-entity id="rig">
+        //Camera controls for 2d screens
+        <a-camera
+          id = "mainCamera"
+          look-controls="pointerLockEnabled: false"
+          wasd-controls
+          position="0.3 1.5 -.6"
+          rotation="0 180 0"
+        >
+          <a-entity
+            id="cursor"
+            cursor="rayOrigin: mouse; fuse: false; fuseTimeout: 500"
+          >
+          </a-entity>
+          //Create fade effect for camera using a sphere geomtry with black
+          material
+          <a-entity
+            id="cameraFade"
+            position="0 20 0"
+            geometry="primitive: sphere; radius: 0.5"
+            material="color: black; shader: flat; opacity: 0; side: back"
+            animation__fadeToBlack="property: material.opacity; from: 0.0; to: 1.0 dur: 500; dir: alternate; startEvents: fadeToBlack"
+            animation__fadeToClear="property: material.opacity; from: 1.0; to: 0.0 dur: 500; dir: alternate; startEvents: fadeToClear"
+          >
+          </a-entity>
+        </a-camera>        
+        //Hand tracking controls
+        <a-entity
+          id="hand-tracking-left"
+          hand-tracking-controls="hand: left; modelColor: #89b7d7"
+          hand-tracking-extras 
+        ></a-entity>
+        <a-entity
+          id="hand-tracking-right"
+          hand-tracking-controls="hand: right; modelColor: #89b7d7"
+          hand-tracking-extras
+        ></a-entity>
+      </a-entity>
 
       
 
@@ -86,49 +126,7 @@
         template="src: templates/Lobby.html"
       ></a-entity>
 
-      //Camera controls for 2d screens
-      <a-camera
-        id = "mainCamera"
-        look-controls="pointerLockEnabled: false"
-        wasd-controls
-        position="0.3 1.5 -.6"
-        rotation="0 180 0"
-      >
-        <a-entity
-          id="cursor"
-          cursor="rayOrigin: mouse; fuse: false; fuseTimeout: 500"
-        >
-        </a-entity>
-        //Create fade effect for camera using a sphere geomtry with black
-        material
-        <a-entity
-          id="cameraFade"
-          position="0 20 0"
-          geometry="primitive: sphere; radius: 0.5"
-          material="color: black; shader: flat; opacity: 0; side: back"
-          animation__fadeToBlack="property: material.opacity; from: 0.0; to: 1.0 dur: 500; dir: alternate; startEvents: fadeToBlack"
-          animation__fadeToClear="property: material.opacity; from: 1.0; to: 0.0 dur: 500; dir: alternate; startEvents: fadeToClear"
-        >
-        </a-entity>
-      </a-camera>
-
-      //Hand tracking controls
-      <a-entity
-        id="hand-tracking-left"
-        hand-tracking-controls="hand: left; modelColor: #89b7d7"
-      ></a-entity>
-      <a-entity
-        id="hand-tracking-right"
-        hand-tracking-controls="hand: right; modelColor: #89b7d7"
-      ></a-entity>
-
-      //Laser controls for controllers
-      <a-entity
-        controller-connected
-        id="right-hand-laser"
-        laser-controls="hand: right"
-        raycaster="lineColor: red; lineOpacity: 0.5"
-      ></a-entity>
+   
 
       //event manager
       <a-entity id="event-manager" event-manager template="src: templates/ui-panel.html"  ui-manager></a-entity>s

@@ -32,7 +32,7 @@ AFRAME.registerComponent("template-button", {
       enterButton.setAttribute('height', '0.5'); // Height of the button
       enterButton.setAttribute('width', '2'); // Width of the button
       enterButton.setAttribute("material", "color: #89b7d7; opacity: 0.9; transparent: true; metalness: 1");
-
+      enterButton.setAttribute('pressable');
       // Add a text label to the button
       const enterButtonText = (this.enterButtonText = document.createElement('a-text'));
       enterButtonText.setAttribute('value', 'Enter Space');

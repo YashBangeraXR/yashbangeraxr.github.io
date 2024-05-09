@@ -77,8 +77,8 @@ AFRAME.registerComponent("ui-manager", {
             this.descriptionContainer.setAttribute('visible', false);
         });
 
-        this.rightArrowButton.addEventListener("click", () => {this.onClickArrow('right'); });   
-        this.leftArrowButton.addEventListener("click", () => {this.onClickArrow('left'); });
+        this.rightArrowButton.addEventListener("onUiButtonClicked", () => {this.onClickArrow('right'); });   
+        this.leftArrowButton.addEventListener("onUiButtonClicked", () => {this.onClickArrow('left'); });
 
     },
 

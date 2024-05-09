@@ -173,23 +173,23 @@
       height=".5"
     >
       <!-- Left Arrow Button -->
-      <a-image
+      <a-entity
         id="left-arrow-button"
         src="#arrow-left-button"
         position="-0.2 0 0.1"
         scale="0.2 0.2 0.2"
+        ui-button="icon: #arrow-left-button;"
       >
-      </a-image>
-
+      </a-entity>
       <!-- Right Arrow Button -->
-      <a-image
+      <a-entity
         id="right-arrow-button"
-        src="#arrow-left-button"
+        src="#arrow-right-button"
         position="0.2 0 0.1"
+        rotation="0 0 180"
         scale="0.2 0.2 0.2"
-        rotation="0 180 0"
+        ui-button="icon: #arrow-left-button;"
       >
-      </a-image>
-    </a-image>
+      </a-entity>
   </a-entity>
 </a-entity>

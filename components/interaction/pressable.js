@@ -1,7 +1,7 @@
 /* global AFRAME, THREE */
 AFRAME.registerComponent('pressable', {
     schema: {
-        pressDistance: { default: 0.06 }
+        pressDistance: { default: 0.02 }
     },
 
     init: function () {

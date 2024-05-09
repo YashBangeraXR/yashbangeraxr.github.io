@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <a-entity
   id="UI-Container"
-  position="0 1.3 -0.2"
+  position="0 1 -0.5"
   rotation="-45 0 0"
   visible="true"
-  look-at="[camera]"
 >
   <a-entity id="Projects-UI" position = "0 -10 0">
     <a-entity
     id="Buttons-Container"
     position="0 0 0"
-    scale=".2 .2 0"
+    scale=".3 .3 0"
     visible="false"
   >
     <a-image
@@ -29,7 +28,6 @@
       width=".3"
       height=".2"
       ui-button="icon: #arrow-left-button;"
-      pressable
     >
     </a-entity>
     <a-entity
@@ -39,7 +37,7 @@
       width=".3"
       height=".2"
       ui-button="icon: #image-button;"
-      pressable
+      
     ></a-entity>
     <a-entity
       id="description-button"
@@ -48,7 +46,7 @@
       width=".3"
       height=".2"
       ui-button="icon: #file-text-button;"
-      pressable
+      
     ></a-entity>
   </a-entity>
   <a-entity
@@ -185,7 +183,7 @@
         position="-0.2 0 0.1"
         scale="0.2 0.2 0.2"
         ui-button="icon: #arrow-left-button;"
-        pressable
+        
       >
       </a-entity>
       <!-- Right Arrow Button -->
@@ -196,7 +194,7 @@
         rotation="0 0 180"
         scale="0.2 0.2 0.2"
         ui-button="icon: #arrow-left-button;"
-        pressable
+        
       >
       </a-entity>
   </a-entity>

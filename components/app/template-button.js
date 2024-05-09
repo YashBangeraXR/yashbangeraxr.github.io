@@ -25,30 +25,26 @@ AFRAME.registerComponent("template-button", {
       backgroundEl.setAttribute("material", "shader: flat; color: white; metalness: 1");
       backgroundEl.setAttribute("position", "0 0 -.01");
 
-      //Create enter space button      
-      // Create the button entity
-      const enterButton = (this.enterButton = document.createElement('a-box'));
-      enterButton.setAttribute('depth', '0.1'); // Thickness of the button
-      enterButton.setAttribute('height', '0.5'); // Height of the button
-      enterButton.setAttribute('width', '2'); // Width of the button
-      enterButton.setAttribute("material", "color: #89b7d7; opacity: 0.9; transparent: true; metalness: 1");
-      enterButton.setAttribute('pressable');
-      // Add a text label to the button
-      const enterButtonText = (this.enterButtonText = document.createElement('a-text'));
-      enterButtonText.setAttribute('value', 'Enter Space');
-      enterButtonText.setAttribute('color', '#FFFFFF');
-      enterButtonText.setAttribute('align', 'center');
-      enterButtonText.setAttribute('position', '0 0 0.05'); // Position text slightly above the button to be visible
-
-      // Append the text and button to the plane, then the plane to the scene
-      enterButton.appendChild(enterButtonText);
-      el.appendChild(enterButton);
+      
+      // create enter space ui button
+      const enterButton = (this.enterButton = document.createElement("a-entity"));
+      enterButton.id = "enterButton";
+      enterButton.setAttribute("ui-button", {
+        label: "Enter Space",
+        icon: "#panel-background",
+        scale: ".2 .0375 0.025",
+        color: "#89b7d7",
+        toggable: false,
+        labelPosition: "0 0 0",
+        labelScale: "3.5 7 7",
+      });
 
       
       //set position and scale of buttonbg
-      enterButton.setAttribute('position', '0 -.025 1.5');
-      enterButton.setAttribute('rotation', '0 0 0');
-      enterButton.setAttribute('scale', '0.075 0.075 0.075');      
+      enterButton.setAttribute('position', '0 0.025 1.3');
+      enterButton.setAttribute('rotation', '0 0 0');   
+
+      this.el.appendChild(enterButton);
       
       //animate moving up from underground to the surface maintaining the x and z position
       //let currentPosition = el.getAttribute("position");

@@ -4,7 +4,10 @@ AFRAME.registerComponent("ui-button", {
       label: { default: "" },
       icon: { default: "#FSNG_Icon-360" },
       scale: { default: "0.25 0.25 0.25" },
+      color: { default: "white" },
       toggable: { default: false },
+      labelPosition: { default: "0 -.4 0" },
+      labelScale: { default: "2 2 2" },
     },
     init: function () {
       console.log("icon: ", this.data.icon);
@@ -13,8 +16,8 @@ AFRAME.registerComponent("ui-button", {
       const el = this.el;
 
       el.setAttribute("geometry", "primitive: plane; width: 1; height: 1; depth: .01");
-      el.setAttribute("material", "shader: flat; color: white; backgroundColor: white; src: " + this.data.icon);
-      el.setAttribute("pressable");
+      el.setAttribute("material", "shader: flat; color:"+ this.data.color + "; backgroundColor: white; src: " + this.data.icon);
+      el.setAttribute("pressable", "");
       el.setAttribute("scale", this.data.scale);
       el.setAttribute("shadow", "receive: true; cast: true" );
   
@@ -28,8 +31,8 @@ AFRAME.registerComponent("ui-button", {
             color: "white",
             align: "center",
         });
-        labelEl.setAttribute("scale", "2 2 2");
-        labelEl.setAttribute("position", "0 -.4 0");
+        labelEl.setAttribute("scale", this.data.labelScale);
+        labelEl.setAttribute("position", this.data.labelPosition);
         labelEl.setAttribute("shadow", "receive: true; cast: true");
       }
 
@@ -58,14 +61,15 @@ AFRAME.registerComponent("ui-button", {
         "animation__mouseleave",
         "property: scale; to: " + this.data.scale + "; dur: 300; startEvents: mouseleave"
       );
-  
-      el.setAttribute(
-        "animation__click",
-        "property: scale; to: 0 0 0; dur: 300; startEvents: cursor-click"
-      );
+
       el.setAttribute(
         "animation__click",
         "property: scale; to: 0 0 0; dur: 300; startEvents: pressedended"
+      );
+  
+      el.setAttribute(
+        "animation__click",
+        "property: scale; to: " + this.data.scale + ";  dur: 300; startEvents: cursor-click"
       );
   
       this.bindMethods();

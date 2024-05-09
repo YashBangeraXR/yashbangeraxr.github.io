@@ -17,7 +17,7 @@ AFRAME.registerComponent("ui-manager", {
     setUpUI: function () {
 
         console.log("UI-manager Loaded: " +  this.el.id);
-        this.uiContainer = document.querySelector("#UI-Container");
+        this.projectsContainer = document.querySelector("#Projects-UI");
         this.imageContainer = document.querySelector("#Images-Container");
         this.descriptionContainer = document.querySelector("#Description-Container");
         this.buttonContainer = document.querySelector("#Buttons-Container");
@@ -27,15 +27,12 @@ AFRAME.registerComponent("ui-manager", {
         this.leftArrowButton = document.querySelector("#left-arrow-button");
         this.rightArrowButton = document.querySelector("#right-arrow-button");
 
-        console.log("UI-Container: ", this.uiContainer);
-
         //add ui-buton events
         this.backButton = document.querySelector("#back-button");
         this.backButton.addEventListener("onUiButtonClicked", () => {
             
             console.log("Home Button Pressed");
             //turn off app UI panels
-            this.uiContainer.setAttribute('visible', false);
             this.imageContainer.setAttribute('visible', false);
             this.descriptionContainer.setAttribute('visible', false);
             this.buttonContainer.setAttribute('visible', false);
@@ -100,16 +97,23 @@ AFRAME.registerComponent("ui-manager", {
             this.descriptionContainer.setAttribute('visible', false);
             this.buttonContainer.setAttribute('visible', false);
             this.lobbyUI.setAttribute('visible', true);
-            this.leftArrowButton.setAttribute('visible', true);
-            this.rightArrowButton.setAttribute('visible', true);
-            return;
+
+            // this is not the correct way to make things not interactable, use classes instead. This is just a quick fix.
+            this.lobbyUI.setAttribute('position', '0 0 0');
+            this.projectsContainer.setAttribute('position', '0 -10 0');
         }
         else
         {    
-            this.buttonContainer.setAttribute('visible', true);
+            console.log("App Selected: ", APP_DATA.selectedApp.name);
             this.lobbyUI.setAttribute('visible', false);
-            this.leftArrowButton.setAttribute('visible', false);
-            this.rightArrowButton.setAttribute('visible', false);
+            this.buttonContainer.setAttribute('visible', true);
+            this.imageContainer.setAttribute('visible', false);
+            this.descriptionContainer.setAttribute('visible', false);
+            this.buttonContainer.setAttribute('visible', true);
+
+            // this is not the correct way to make things not interactable, use classes instead. This is just a quick fix.
+            this.lobbyUI.setAttribute('position', '0 -10 0');
+            this.projectsContainer.setAttribute('position', '0 0 0');
         }
     },
 

@@ -46,9 +46,9 @@ AFRAME.registerComponent("template-button", {
 
       
       //set position and scale of buttonbg
-      enterButton.setAttribute('position', '0 -.2 1.5');
-      enterButton.setAttribute('rotation', '-45 0 0');
-      enterButton.setAttribute('scale', '0.2 0.2 0.2');      
+      enterButton.setAttribute('position', '0 -.025 1.5');
+      enterButton.setAttribute('rotation', '0 0 0');
+      enterButton.setAttribute('scale', '0.075 0.075 0.075');      
       
       //animate moving up from underground to the surface maintaining the x and z position
       //let currentPosition = el.getAttribute("position");

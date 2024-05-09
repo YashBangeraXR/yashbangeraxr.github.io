@@ -20,12 +20,19 @@ AFRAME.registerComponent("project-area", {
       if (distance <= 3 && !this.animated) {
         this.portalEl.emit("showPortal");
         this.animated = true;
-        console.log("showing portal");
+        this.descriptionPanelEl.setAttribute("visible", true);
+        this.imagesPanelEl.setAttribute("visible", true);
+        console.log("Showing Data");
       } 
       else if (distance > 3 && this.animated) {
         this.animated = false;
-        this.portalEl.emit("hidePortal");
+        this.descriptionPanelEl.setAttribute("visible", false);
+        this.imagesPanelEl.setAttribute("visible", false);
+        this.portalEl.emit("Hiding Data");
       }
+
+      //Keep the world rotation of the project area facing the world origin
+      this.el.object3D.lookAt(0, 1.5, 1);
     },
 
     init: function()
@@ -63,6 +70,7 @@ AFRAME.registerComponent("project-area", {
         teleportAreaEl.id = "teleportArea" + this.data.label;
         teleportAreaEl.setAttribute("teleport-area", { color: "#89b7d7" });        
         teleportAreaEl.setAttribute("position", "0 -1.4 2.5");       
+        teleportAreaEl.setAttribute("scale", ".6 .6 .6");
         el.appendChild(teleportAreaEl);
 
         //Create images panel on the left
@@ -211,10 +219,5 @@ AFRAME.registerComponent("project-area", {
 
         // Append Results Parent to 'el' or any desired parent element
         descriptionPanelEl.appendChild(resultsParent);
-
-        //rotate entire project to face the parent element
-        const parent = document.querySelector("#projectMenu");
-        this.el.setAttribute("look-at", "#projectMenu");
-
     },
 });

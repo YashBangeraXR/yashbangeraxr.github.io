@@ -21,8 +21,8 @@ AFRAME.registerComponent("teleport-area",
         this.el.setAttribute("shadow", "receive: true; cast: true");
 
         //animate scale on mouse enter and leave
-        el.setAttribute("animation__scale_mouseenter", "property: scale; to: 1.1 1.1 1.1; dur: 300; startEvents: mouseenter");
-        el.setAttribute("animation__scale_mouseleave", "property: scale; to: 1 1 1; dur: 300; startEvents: mouseleave");
+        el.setAttribute("animation__scale_mouseenter", "property: scale; to: .7 .7 .7; dur: 300; startEvents: mouseenter");
+        el.setAttribute("animation__scale_mouseleave", "property: scale; to: .6 .6 .6; dur: 300; startEvents: mouseleave");
 
         //change color to green on mouse enter
         el.setAttribute("animation__color_mouseenter", "property: material.color; to: #0f0; dur: 300; startEvents: mouseenter");

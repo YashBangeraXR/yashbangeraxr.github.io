@@ -15,42 +15,55 @@ AFRAME.registerComponent('transient-input-handler', {
   
     onInputSourcesChange: function (event) {
       event.added.forEach((inputSource) => {
-        if (inputSource.targetRayMode === 'transient') {
-          console.log('Transient input source added:', inputSource);
+        if (inputSource.targetRayMode === 'transient-pointer') {
           // This is where you might prepare to handle new inputs
         }
       });
   
       event.removed.forEach((inputSource) => {
-        console.log('Transient input source removed:', inputSource);
         // Handle cleanup for removed inputs here
       });
     },
   
-    onSelectStart: function (event) {
-      const inputSource = event.inputSource;
-      if (inputSource.targetRayMode === 'transient') {
-        const rayPose = inputSource.getPose(inputSource.targetRaySpace);
-        if (rayPose) {
-          this.performRaycast(rayPose);
-        }
-      }
-    },
-  
-    onSelectEnd: function (event) {
-      console.log('Interaction ended with input source:', event.inputSource);
-    },
-  
-    performRaycast: function (pose) {
-      const origin = new THREE.Vector3(pose.transform.position.x, pose.transform.position.y, pose.transform.position.z);
-      const direction = new THREE.Vector3(pose.transform.orientation.x, pose.transform.orientation.y, pose.transform.orientation.z, pose.transform.orientation.w).normalize();
-      const raycaster = new THREE.Raycaster(origin, direction);
-      const intersects = raycaster.intersectObjects(this.el.sceneEl.object3D.children, true);
-  
-      if (intersects.length > 0) {
-        console.log('Object selected:', intersects[0]. object);
-        // Further logic for interaction
-      }
+  onSelectStart: function (event) {
+    const inputSource = event.inputSource;
+    if (inputSource.targetRayMode === 'transient-pointer') {
+        this.el.sceneEl.renderer.xr.getSession().requestAnimationFrame((time, frame) => {
+            const refSpace = this.el.sceneEl.renderer.xr.getReferenceSpace('viewer');
+            const pose = frame.getPose(inputSource.targetRaySpace, refSpace);
+            if (pose) {
+                this.performRaycast(pose);
+            } else {
+                console.error('No pose available for this input source');
+            }
+        });
     }
+},
+
+  
+  onSelectEnd: function (event) {
+  },
+
+ performRaycast: function (pose) {
+    const origin = new THREE.Vector3(pose.transform.position.x, pose.transform.position.y, pose.transform.position.z);
+    const quaternion = new THREE.Quaternion(pose.transform.orientation.x, pose.transform.orientation.y, pose.transform.orientation.z, pose.transform.orientation.w);
+    const direction = new THREE.Vector3(0, 0, -1); // Forward direction
+    direction.applyQuaternion(quaternion);
+
+    const raycaster = new THREE.Raycaster(origin, direction.normalize());
+    const intersects = raycaster.intersectObjects(this.el.sceneEl.object3D.children, true);
+
+   if (intersects.length > 0) {
+     //send click event to the intersected object at the top of the stack
+        intersects[0].object.el.emit('click');
+
+        for (let i = 0; i < intersects.length; i++) {
+            console.log('Intersected object:', intersects[i].object.el.id);
+        }
+    } else {
+        console.log('No intersections found');
+    }
+}
+
   });
   

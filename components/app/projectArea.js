@@ -68,13 +68,14 @@ AFRAME.registerComponent("project-area", {
         labelEl.setAttribute("shadow", "receive: true; cast: true");
         this.el.appendChild(labelEl);
         
+        
         //create teleport area on the floor in front of the portal
-        const teleportAreaEl = (this.teleportAreaEl = document.createElement("a-entity"));
-        teleportAreaEl.id = "teleportArea" + this.data.label;
-        teleportAreaEl.setAttribute("teleport-area", { color: "#89b7d7" });        
-        teleportAreaEl.setAttribute("position", "0 -1.4 2.5");       
-        teleportAreaEl.setAttribute("scale", ".6 .6 .6");
-        el.appendChild(teleportAreaEl);
+        const teleportAreaEl = (this.teleportAreaEl = document.createElement("a-entity"));    
+        teleportAreaEl.setAttribute("position", "0 -1.4 2.5");
+        el.appendChild(teleportAreaEl)       
+        /* Removing teleport area for now
+        teleportAreaEl.setAttribute("teleport-area", { color: "#89b7d7" });    
+        teleportAreaEl.setAttribute("scale", ".6 .6 .6");;*/
 
         //Create images panel on the left
         const imagesPanelEl = (this.imagesPanelEl = document.createElement("a-image"));

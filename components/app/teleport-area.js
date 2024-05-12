@@ -39,7 +39,7 @@ AFRAME.registerComponent("teleport-area",
         console.log("Teleporting...");
         //teleport the camera rig to the teleport area
         // Get the camera rig
-        const cameraRig = document.querySelector("#mainCamera");
+        const cameraRig = document.querySelector("#rig");
         // Get the local position of the teleport area
         let localTeleportPosition = this.el.getAttribute("position").clone();
         // Get the world position of the teleport area by converting the local position

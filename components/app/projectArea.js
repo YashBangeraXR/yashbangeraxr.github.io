@@ -72,7 +72,7 @@ AFRAME.registerComponent("project-area", {
         //create teleport area on the floor in front of the portal
         const teleportAreaEl = (this.teleportAreaEl = document.createElement("a-entity"));    
         teleportAreaEl.setAttribute("position", "0 -1.4 2.5");
-        el.appendChild(teleportAreaEl)       
+        el.appendChild(teleportAreaEl);
         /* Removing teleport area for now
         teleportAreaEl.setAttribute("teleport-area", { color: "#89b7d7" });    
         teleportAreaEl.setAttribute("scale", ".6 .6 .6");;*/
@@ -92,18 +92,23 @@ AFRAME.registerComponent("project-area", {
         imageGrid.setAttribute("layout", "align: center; type:box; columns: 3; marginRow: .4; marginColumn: .55");
         imageGrid.setAttribute("position", "0 0 0.01");
         const appTarget = APP_DATA[this.data.target];
-        console.log("Updating Image Panel for selected app: ", appTarget.name);
+        console.log("label: ", this.data.label);
+        console.log("Updating Image Panel for selected app: ", appTarget);
         //delete existing images that are children of the grid
         while (imageGrid.firstChild) {
             imagesPanelEl.removeChild(imageGrid.firstChild);
           }
         //Add new images to grid as children based on selected app
-        appTarget.images.forEach((imagePath) => {
+        //if there are no images, skip
+        if (appTarget.images.length > 0)
+        {
+          appTarget.images.forEach((imagePath) => {
             const thisImage = document.createElement('a-image');
             thisImage.setAttribute('src', imagePath);
             thisImage.setAttribute('scale', appTarget.imageScale);          
             imageGrid.appendChild(thisImage);
           });
+        }        
         imagesPanelEl.appendChild(imageGrid);
 
         //Create description panel on the right

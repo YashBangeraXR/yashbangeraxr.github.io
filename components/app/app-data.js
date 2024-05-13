@@ -54,6 +54,26 @@ window.APP_DATA = {
     ],
     imageScale: '.325 .75 .75',
   },
+  
+  gerrymanderMadness: {
+    templatePath: 'templates/GerrymanderMadness.html',
+    name: 'Gerrymander Madness',
+    description: 'Breif description of app.',
+    challenge: ``,
+    approach: ``,
+    results: ``,
+    images: [''],
+  },
+  
+  cleanEnergySmartHome: {
+    templatePath: 'templates/CleanEnergySmartHome.html',
+    name: 'Clean Energy Smart Home',
+    description: 'Breif description of app.',
+    challenge: ``,
+    approach: ``,
+    results: ``,
+    images: [''],
+  },
   baseTemplate: {
     templatePath: 'templates/Lobby.html',
     name: 'baseTemplate',

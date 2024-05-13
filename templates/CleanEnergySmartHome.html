@@ -1,0 +1,27 @@
+<a-entity
+  id="FSNG"
+  position="0, 0.01, -2.5"
+  gltf-model="#FSNG"
+  animation-mixer
+  shadow="cast: true; receive: true"
+></a-entity>
+//Add directional light
+<a-light
+  id="directional"
+  type="directional"
+  light="castShadow:true; shadowBias: -0.001"
+  position="0 2.25 .4"
+  rotation="-90 0 0"
+  intensity="1"
+  target="#directionaltarget"
+>
+  <a-entity id="directionaltarget" position=".3 2.75 -2.5"></a-entity>
+</a-light>
+//add ambient light
+<a-light
+  id="ambient"
+  type="ambient"
+  light="color: #ffffff; intensity: 1"
+></a-light>
+
+</a-entity>
